@@ -3,10 +3,10 @@
     "type": "magento-module",
     "license": "GNU-General-Public-License-(GPL)",
     "homepage": "",
-    "description": "Social login , Social sharing with most common social login networks.",
+    "description": "Social Login, Social Sharing allows login, share, comment using any social network like Twitter, Google, Facebook, Vkontakte. EASIEST to configure.",
     "authors": [
     {
-        "name": "miniOrange inc.",
+        "name": "miniOrange",
         "email": "info@miniorange.com"
     }
 ],

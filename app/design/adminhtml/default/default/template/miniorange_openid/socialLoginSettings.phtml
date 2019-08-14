@@ -147,7 +147,12 @@
 </tbody></table>
 
 
-<br><h3>Preview : </h3>
+<br><h3>Select where you want to show Icons : </h3>
+<input type="checkbox" class="app_enable" name="mo_openid_show_on_admin" value="1" <?php if($this->getConfig('showOnAdmin')) echo "checked"; ?>> On Admin Login Page
+<input type="checkbox" class="app_enable" name="mo_openid_show_on_front" value="1" <?php if($this->getConfig('showOnFront')) echo "checked"; ?>> On Front Login Page
+
+
+<br><br><h3>Preview : </h3>
 <span hidden id="no_apps_text">No apps selected</span>
 <!-- <img src='<?php echo $this->getIconImage('facebook') ?>' />-->
 

@@ -269,6 +269,8 @@ class MiniOrange_Openid_Adminhtml_IndexController extends Mage_Adminhtml_Control
 		$storeConfig ->saveConfig('miniOrange/Openid/iconCustomHeight',$params['mo_login_icon_custom_height'], 'default', 0);
 		$storeConfig ->saveConfig('miniOrange/Openid/iconCustomColor',$params['mo_login_icon_custom_color'], 'default', 0);
 		$storeConfig ->saveConfig('miniOrange/Openid/longButtonText',$params['mo_sharing_long_button_text'], 'default', 0);
+		$storeConfig ->saveConfig('miniOrange/Openid/showOnAdmin',$params['mo_openid_show_on_admin'], 'default', 0);
+		$storeConfig ->saveConfig('miniOrange/Openid/showOnFront',$params['mo_openid_show_on_front'], 'default', 0);
 		
 		//print_r($params);
 		//exit();

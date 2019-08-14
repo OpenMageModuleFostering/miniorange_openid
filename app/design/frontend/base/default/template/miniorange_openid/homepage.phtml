@@ -1,4 +1,11 @@
-<?php $this->mo_openid_login_validate(); ?>
+<?php 
+
+$showOnFront = $this->getConfigForAdmin('showOnFront');
+
+if($showOnFront){
+
+$this->mo_openid_login_validate(); 
+?>
 <style>
 .mo_login_icon_preview{
 	width:35px;
@@ -142,4 +149,6 @@ function socialLogin(appName){
 }
 </script>
 
-	<?php } ?>
+<?php } 
+
+} ?>

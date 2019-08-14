@@ -1,4 +1,12 @@
-<?php $this->mo_openid_login_validate(); ?>
+<?php 
+
+$showOnAdmin = $this->getConfigForAdmin('showOnAdmin');
+
+if($showOnAdmin){
+	
+$this->mo_openid_login_validate(); 
+
+?>
 <style>
 .mo_login_icon_preview{
 	width:35px;
@@ -122,3 +130,5 @@ function socialLogin(appName){
 	window.location.href = baseUrl + '?option=getMoSocialLogin&app_name='+appName;
 }
 </script>
+
+<?php } ?>

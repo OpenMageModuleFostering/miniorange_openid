@@ -167,6 +167,12 @@ class MiniOrange_Openid_Helper_Data extends Mage_Core_Helper_Abstract {
 			case 'plan' :
 				$result = Mage::getStoreConfig ( 'miniOrange/Openid/plan' );
 				break;
+			case 'showOnAdmin' :
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/showOnAdmin' );
+				break;
+			case 'showOnFront' :
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/showOnFront' );
+				break;
 			default :
 				return;
 				break;
