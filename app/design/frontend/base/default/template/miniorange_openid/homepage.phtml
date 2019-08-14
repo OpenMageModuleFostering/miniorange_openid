@@ -49,9 +49,9 @@ $this->mo_openid_login_validate();
 			
 ?>
 
-<div class="block-title">
+<!--<div class="block-title">
         <strong><span>Social Login</span></strong>
-</div>
+</div>-->
 <div id="messages">
 		<ul class="mini-messages">
 		<?php if(Mage::getSingleton('core/session')->getErrorMessage()){?>
@@ -145,7 +145,8 @@ $this->mo_openid_login_validate();
 <script>
 //var baseUrl = '<?php echo $this->getOpenIdAdminUrl(); ?>';
 function socialLogin(appName){
-	window.location.href = '<?php echo Mage::getBaseUrl(); ?>sociallogin/index/index?option=customerSocialLogin&app_name='+appName;
+	<?php $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+	window.location.href = '<?php echo Mage::getBaseUrl(); ?>sociallogin/index/index?option=customerSocialLogin&app_name='+appName+'&redirectto=<?php echo $actual_link;?>';
 }
 </script>
 
