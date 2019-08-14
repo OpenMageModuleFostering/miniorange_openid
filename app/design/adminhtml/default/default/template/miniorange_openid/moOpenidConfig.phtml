@@ -1,0 +1,1358 @@
+	<html>
+	<head>		
+		<link href="https://auth.miniorange.com/moas/css/telephone.css" rel="stylesheet">
+		<link  href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'adminhtml/default/default/MiniOrange_Openid/css/bootstrap-social.css'; ?>" rel="stylesheet">
+		<link  href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'adminhtml/default/default/MiniOrange_Openid/css/font-awesome.min.css'; ?>" rel="stylesheet">
+		<style>
+		
+			.container{width:100%;float:left}.container-page{border:1px solid #c1bdbd;border-top-color:transparent;border-bottom-left-radius:4px;border-bottom-right-radius:4px;transition:width 2s,height 4s}.mo2f_container{display:inline-flex;width:100%}.heading>h3{margin-left:5px;font-size:18px;text-decoration:underline;line-height:1.1;color:inherit}.navbar-tabs{border-bottom:1px solid #c1bdbd}.navbar-tabs>li.active>a,.navbar-tabs>li.active>a:focus,.navbar-tabs>li.active>a:hover,.navbar-tabs>li.always-active>a,.navbar-tabs>li.always-active>a:focus,.navbar-tabs>li.always-active>a:hover{color:#000;font-size:15px;cursor:default;background-color:#fff;border:1px solid #c1bdbd;border-bottom-color:transparent}.navbar-tabs>li>a{font-size:15px;margin-right:2px;line-height:1.42857143;border-radius:4px 4px 0 0;color:#555;text-decoration:none;background:#DCD9D9;border-right:1px solid #7B7A7A;border-left:1px solid #FFF}.navbar-tabs>li{float:left;margin-bottom:-1px}.navbar ul{margin-top:0;margin-bottom:10px}.navbar-tabs>li>a:hover{border-color:#eee #eee #c1bdbd}.navbar>li>a:hover{text-decoration:none;background-color:#eee;border:1px solid #B7B5B5}a:focus,a:hover{color:#23527c;outline:0}.navbar{padding-left:0;margin-bottom:0;list-style:none;width:100%}.navbar>li>a{position:relative;display:block;padding:5px 10px;cursor:pointer}.navbar:after,.navbar:before{display:table;content:"";clear:both}#helptrouble,#pricing,#socialsharing,#sociallogin{display:none}.page,table{overflow:hidden;display:block}.mo2f_support_layout{padding-left:3%;padding-top:2%;border:1px solid #c1bdbd;border-top-color:transparent;border-bottom-left-radius:4px;border-bottom-right-radius:4px;height:395px}.page{padding:0 1%;min-height:395px}td,th{padding:10px 15px}td{color:#6f6f6f}input[type=submit]{border:0;padding:8px 15px;background:#ff8500;color:#fff;box-shadow:1px 1px 4px #dadada;-moz-box-shadow:1px 1px 4px #dadada;-webkit-box-shadow:1px 1px 4px #dadada;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-webkit-appearance:button;cursor:pointer}input[type=submit]:hover{background:#ea7b00;color:#fff}td>input,textarea{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;border:1px solid #c2c2c2;-moz-box-shadow:1px 1px 4px #ebebeb;-webkit-box-shadow:1px 1px 4px #ebebeb;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;padding:7px;outline:0;width:370px}.intl-number-input input,td>input,textarea{box-sizing:border-box;box-shadow:1px 1px 4px #ebebeb}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.btn-link,hr{margin-bottom:1%}input[type=number]{-moz-appearance:textfield}td>input:focus,textarea:focus{border:1px solid #ff8500}input[type=checkbox]{cursor:pointer;width:17px;height:16px;margin-right:1%;margin-left:1%}.button-align{display:inline-block;text-align:left;padding-left:4%}.center{width:100%;display:table;text-align:center}#minisupport{float:left;margin-left:2%}hr{border:0;border-top:1px solid #c1bdbd;border-bottom:1px solid #fafafa}#displayQrCode,#testQrCode,.collapse,.panel-body{margin-top:2%;background:#F7F7F7;border-radius:4px}#testQrCode{padding:3% 0}#progress_bar{background:url(http://auth.miniorange.com/moas/images/ajax-loader4.gif) no-repeat;display:block;margin:3% auto;height:140px;width:140px}.required{color:red;margin-left:1%}.panel-body>ol{list-style:disc;margin-left:5%}.collapse{display:none;padding:2%;margin:1%;text-align:justify;font-size:13px}.collapse>ol{list-style:disc;margin-left:2%}.btn-link{color:#ea7601;font-size:16px;cursor:pointer}.btn-link>li{margin-left:3%}.btn-link>li:before{content:"";display:block;left:-1em;top:.7em;position:relative;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid #ea7b00}#displayQrCode{height:200px;margin-top:1%;padding-top:3%}#displayQrCode>img{margin-left:-1%;height:180px}#slider1,#slider2,#slider3,#slider4,#slider5,#slider6,#slider7,#slider8{position:relative;overflow:hidden}#slider1 ul,#slider2 ul,#slider3 ul,#slider4 ul,#slider5 ul,#slider6 ul,#slider7 ul,#slider8 ul{position:relative;margin:0;padding:0;height:200px;list-style:none}#slider1 ul li,#slider2 ul li,#slider3 ul li,#slider4 ul li,#slider5 ul li,#slider6 ul li,#slider7 ul li,#slider8 ul li{position:relative;display:block;float:left;margin:0;padding:0;width:780px;height:400px;text-align:center}.control_info,.control_next,.control_prev{position:absolute;z-index:999;cursor:pointer}.control_prev{left:0;top:49%;transform:rotate(180deg)}.control_next{right:0;top:50%}#showDownload{margin:2% 0}#userprofile table{width:90%;margin-top:2%;border-radius:4px;border-collapse:collapse}table td{vertical-align:middle}#userprofile table td,#userprofile table th{width:100%;border:2px solid #ccc;text-align:left;font-size:15px}#error-cancel,#success-cancel{text-decoration:none;font-size:21px;float:right}#userprofile table th{background:#F7F7F7}#slider1>ul>li>img,#slider2>ul>li>img,#slider3>ul>li>img,#slider4>ul>li>img,#slider5>ul>li>img,#slider7>ul>li>img,#slider8>ul>li>img{left:0}#messages{margin:1%}.mini-messages li{min-height:23px!important;padding:4px 4px 1px 18px!important;font-weight:700!important;text-align:left}#error-cancel{color:red}#success-cancel{color:#72C868}.intl-number-input input{height:30px;padding-left:40px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;border:1px solid #c2c2c2;-moz-box-shadow:1px 1px 4px #ebebeb;-webkit-box-shadow:1px 1px 4px #ebebeb;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;outline:0;width:370px}.intl-number-input .flag-dropdown .selected-flag{margin:7px;padding:0}.control_info{-moz-border-radius:4px;-webkit-border-radius:4px;padding:1%;border-radius:4px;width:20px;background-color:#b7b3b3;height:20px;color:#fff;text-align:center;font-size:13px;font-family:"Trebuchet MS",Helvetica,sans-serif}.active_method{font-size:15px;color:#66AE19;padding:1% 0;margin-bottom:1%;background-color:#eff5ea;border-radius:4px;text-align:center;border:1px solid #95A486}.mo2f_methods{display:inline-table;width:100%;text-align:center}.mo2f_methods div{padding:1%;float:left;width:30%}.mo2f_thumbnail{width:30%;padding:3px;margin-left:1%;margin-bottom:1%;line-height:1.42857143;background-color:#fff;border:2px solid #ddd;border-radius:4px;float:left}.mo2f_click{cursor:pointer;min-height:126px}.method_active{cursor:default}.mo2f_thumbnail label{font-size:14px;font-weight:700}.mo2f_thumbnail:hover{border:2px solid #FF8500;box-shadow:3px 3px 4px #ebebeb;-moz-box-shadow:3px 3px 4px #ebebeb;-webkit-box-shadow:3px 3px 4px #ebebeb}.method_active_box,.method_active_box:hover{border:2px solid #95A486}.mo2f_thumbnail p{font-size:13px;padding:1%;text-align:justify}.method_active_box{background-color:#eff5ea;box-shadow:3px 3px 4px #ebebeb;-moz-box-shadow:3px 3px 4px #ebebeb;-webkit-box-shadow:3px 3px 4px #ebebeb}.mo2f_configure{background-color:rgba(255,133,0,.34);padding:3%;border-radius:4px}.mo2f_configure a{text-decoration:none;font-size:14px}#twofactorselect{display:none}@media screen and (max-width:1271px){#slider1 ul li,#slider2 ul li,#slider3 ul li,#slider4 ul li,#slider5 ul li,#slider6 ul li,#slider7 ul li{width:832px}#minisupport{width:100%;margin-left:0;margin-top:3%}.mo2f_container{display:inline}.mo2f_support_layout{padding-left:1%;padding-top:1%}}@media screen and (max-width:1366px){table{overflow:hidden}}#slider1 img,#slider2 img,#slider3 img,#slider4 img,#slider5 img,#slider7 img,#slider8 img{display:block;margin:auto;width:100%}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://auth.miniorange.com/moas/js/intlTelInput.min.js"></script>
+		<script>
+			var $m=jQuery.noConflict();$m(document).ready(function(){$m("#phone").intlTelInput();$m("#query_phone").intlTelInput();$m("#additional_phone").intlTelInput();$email="<?php echo $this->getConfig('email'); ?>";$downloaded="<?php echo $this->getConfig('downloaded'); ?>";$twofactortype="<?php echo $this->getConfig('twofactortype'); ?>"
+			$showsocialsharing="<?php echo Mage::getSingleton('admin/session')->getshowsocialsharing(); ?>";$showTwoFactorSettings="<?php echo Mage::getSingleton('admin/session')->getShowTwoFactorSettings(); ?>";if($email!=""){if($showsocialsharing=="1"){voiddisplay("#socialsharing");setactive('social-sharing-setup');}else if($showTwoFactorSettings=="1"){voiddisplay("#sociallogin");setactive('social-login-setup');}else{setactive('user_profile');}}else{setactive('account_setup');}
+			if($twofactortype!=""){$m(".active_method>b").empty();$selectedMethod=$twofactortype.toLowerCase().replace(/ /g,"_");$m(".active_method>b").append($twofactortype);$m(".mo2f_thumbnail").removeClass("method_active_box");$m("input[name='mo2f_selected_2factor_method']").removeAttr("checked");$m(".mo2f_click").removeClass("method_active");$m('#'+$selectedMethod).addClass("method_active_box");$m('#'+$selectedMethod).find(".mo2f_click").addClass("method_active");$m('#'+$selectedMethod).find("input").prop("checked",true);$m('#'+$selectedMethod).find("input").attr("disabled",true);}else{$m(".active_method>b").append("NONE");}
+			if($downloaded=="1"){$m('#showDownload').prop('checked',true);$m("#showDownload").val(1);}
+			if($m("#showDownload").is(":checked")){$m("#configureqr").css("display","block");$m("#downloadscreen").css("display","none");}else{$m("#configureqr").css("display","none");$m("#downloadscreen").css("display","block");}
+			$m(".navbar a").click(function(){$id=$m(this).parent().attr('id');setactive($id);$href=$m(this).data('method');voiddisplay($href);});$m(".btn-link").click(function(){$m(".collapse").slideUp("slow");if(!$m(this).next("div").is(':visible')){$m(this).next("div").slideDown("slow");}});$m('#showDownload').change(function(){if($m(this).attr('checked')){$m(this).val(0);$m(this).attr('checked',false);}else{$m(this).val(1);$m(this).attr('checked',true);$m("#configmobilebutton").click();}
+			$m("#downloadscreen").slideToggle();$m("#configureqr").slideToggle();document.location.href="#displayQrCode";});$m('#preview1').click(function(){$m("a[data-method='#pricing']").click();$m("#offline-preview").click();document.location.href="#slider3";});$m('#preview2').click(function(){$m("a[data-method='#pricing']").click();$m("#phonelost-preview").click();document.location.href="#slider4";});$m('#preview3').click(function(){$m("a[data-method='#pricing']").click();$m("#reconfigure-preview").click();document.location.href="#slider5";});$m('.preview4').click(function(){$m("a[data-method='#pricing']").click();$m("#register-preview").click();document.location.href="#slider2";});$m('.preview5').click(function(){$m("a[data-method='#pricing']").click();$m("#reconfigure-preview-2").click();document.location.href="#slider7";});$m('#error-cancel').click(function(){$error="";$m(".error-msg").css("display","none");});$m('#success-cancel').click(function(){$success="";$m(".success-msg").css("display","none");});$m('#cURL').click(function(){$m(".help_trouble").click();$m("#cURLfaq").click();});$m(".mo2f_click").click(function(){if(!$m(this).hasClass("method_active")){$m(this).find("input").prop("checked",true);$m(".mo2f_thumbnail").hide();$m("#twofactorselect").show();$m("#mo2f_2factor_form").submit();}});$m(".reconfigure").click(function(){$m(".mo2f_thumbnail").hide();$m("#twofactorselect").show();if($m(this).data("method")=="SMS"||$m(this).data("method")=="PHONE VERIFICATION"){$m("#phone_reconfigure").val($m(this).data("method"));$m("#mo2f_2factor_reconfigure_phone_form").submit();}else{$m("#reconfigure_mobile").val(1);$m("#mo2f_2factor_reconfigure_mobile_form").submit();}});$m(".test").click(function(){$m(".mo2f_thumbnail").hide();$m("#twofactorselect").show();$m("#test_2factor").val($m(this).data("method"));$m("#mo2f_2factor_test_form").submit();});});function setactive($id){$m(".navbar-tabs>li").removeClass("active");$m("#minisupport").show();$id='#'+$id;$m($id).addClass("active");}
+			function voiddisplay($href){$m(".page").css("display","none");$m($href).css("display","block");}
+			function mo2f_valid(f){!(/^[a-zA-Z?,.\(\)\/@ 0-9]*$/).test(f.value)?f.value=f.value.replace(/[^a-zA-Z?,.\(\)\/@ 0-9]/,''):null;}
+		</script>
+		<script>
+			var $j=jQuery.noConflict();var timeout;var transId="<?php echo $this->getTransactionId(); ?>";var test="<?php echo Mage::getSingleton('admin/session')->getTestValidationScreen(); ?>";var testMobile="<?php echo Mage::getSingleton('admin/session')->getShowTestMobileAuth(); ?>";function pollMobileRegistration(){if(test=="1"){var postUrl="<?php echo $this->getHostURl()  ?>"+"/moas/api/auth/auth-status";}else{var postUrl="<?php echo $this->getHostURl()  ?>"+"/moas/api/auth/registration-status";}
+			var jsonString="{\"txId\":\""+transId+"\"}";$j.ajax({url:postUrl,type:"POST",dataType:"json",data:jsonString,contentType:"application/json; charset=utf-8",success:function(result){var status=JSON.parse(JSON.stringify(result)).status;if(status=='SUCCESS'){var content="<div id='success' style='margin-left: 1%; margin-top:2%;'><img src='"+"<?php echo $this->getImage('right') ?>"+"' /></div>";if(test!="1"){$j("#displayQrCode").empty();$j("#displayQrCode").append(content);}else if(testMobile=="1"){$j("#testQrCode").empty();$j("#testQrCode").append(content);}
+			setTimeout(function(){$j("#mobile_register_form").submit();},1000);}else if(status=='ERROR'||status=='FAILED'){var content="<div id='error' style='margin-left: 1%; margin-top:2%;'><img src='"+"<?php echo $this->getImage('wrong') ?>"+"' /></div>";if(test!="1"){$j("#displayQrCode").empty();$j("#displayQrCode").append(content);}else if(testMobile=="1"){$j("#testQrCode").empty();$j("#testQrCode").append(content);}
+			setTimeout(function(){$j("#mobile_register_failed").submit();},1000);}else{timeout=setTimeout(pollMobileRegistration,3000);}}});}
+			if(transId!=""){pollMobileRegistration();}
+		</script>
+		<script>
+			var $j=jQuery.noConflict();$j(document).ready(function($j){for(var i=1;i<=8;i++){var slideCount=$j('#slider'+i+' ul li').length;var slideWidth=$j('#slider'+i+' ul li').width();var slideHeight=$j('#slider'+i+' ul li').height();var sliderUlWidth=slideCount*slideWidth;var no=1;$j('.control_info[data-slider='+i+']').append(no);$j('#slider'+i+'').css({width:slideWidth,height:slideHeight});$j('#slider'+i+' ul').css({width:sliderUlWidth,marginLeft:-slideWidth});$j('#slider'+i+' ul li:last-child').prependTo('#slider'+i+' ul');}
+			function moveLeft(id){$j('ul[data-slider='+id+']').fadeOut("slow",function(){$j('ul li[data-slider='+id+']:last-child').prependTo('ul[data-slider='+id+']');$j('ul[data-slider='+id+']').css('left','');$j('ul[data-slider='+id+']').fadeIn("slow");no=$j('ul li[data-slider='+id+']').next().data('pos');$j('.control_info[data-slider='+id+']').empty();$j('.control_info[data-slider='+id+']').append(no);});};function moveRight(id){$j('ul[data-slider='+id+']').fadeOut("slow",function(){$j('ul li[data-slider='+id+']:first-child').appendTo('ul[data-slider='+id+']').fadeIn("slow");$j('ul[data-slider='+id+']').css('left','');$j('ul[data-slider='+id+']').fadeIn("slow");no=$j('ul li[data-slider='+id+']').next().data('pos');$j('.control_info[data-slider='+id+']').empty();$j('.control_info[data-slider='+id+']').append(no);});};$j('.control_prev').click(function(){moveLeft($j(this).data('slider'));});$j('.control_next').click(function(){moveRight($j(this).data('slider'));});});
+		</script>
+	</head>		
+	<body>
+		<div class="heading"> <h3>MINIORANGE SOCIAL LOGIN & SHARING EXTENSION CONFIGURATION</h3></div>
+		<div class="mo2f_container">
+		<div class="container">
+		  <ul class="navbar navbar-tabs">
+			<?php if( $this->getConfig('email')){?>
+			<!-- <li id="user_profile"><a data-method="#userprofile">User Profile</a></li> -->
+			<?php }else{?>
+			<li id="account_setup"><a data-method="#accountsetup">Account Setup</a></li>
+			<?php }?>
+			<li id="social-login-setup"><a data-method="#sociallogin">Social Login</a></li>
+			<li id="social-sharing-setup"><a data-method="#socialsharing">Social Sharing</a></li>
+			<li id="shorcode-tab"><a data-method="#pricing">Licencing Plans</a></li>
+			<li id="help_trouble"><a data-method="#helptrouble">Help & Troubleshooting</a></li>
+		  </ul>
+		<div class="container-page">
+			<div id="messages">
+                        <ul class="mini-messages">
+						<?php if(Mage::getSingleton('core/session')->getErrorMessage()){?>
+						<li class="error-msg"><ul><li><span><?php echo Mage::getSingleton('core/session')->getErrorMessage(); ?></span><a id="error-cancel" href="#">&times;</a></li></ul></li>
+						<?php }?>
+						<?php if(Mage::getSingleton('core/session')->getSuccessMessage()){?>
+						<li class="success-msg"><ul><li><span><?php echo Mage::getSingleton('core/session')->getSuccessMessage(); ?></span><a id="success-cancel" href="#">&times;</a></li></ul></li>
+						<?php }?>
+						</ul>						
+			</div>
+			<!-- USER PROFILE TAB -->
+			<?php if( $this->getConfig('email') ){?>
+			<div class="page" id="userprofile">
+			<div class="mo2f_table_layout">
+			<div><h3>YOUR PROFILE INFORMATION</h3><hr></div>	
+				<table>
+				  <tr>
+					<td><b>miniOrange Account Email</b></td>
+					<td><?php echo $this->getConfig('email')?></td> 
+				  </tr>
+				  <tr>
+					<td><b>Customer Key</b></td>
+					<td><?php echo $this->getConfig('customerKey')?></td> 
+				  </tr>
+				  <tr>
+					<td><b>Api Key</b></td>
+					<td><?php echo $this->getConfig('apiKey')?></td> 
+				  </tr>
+				  <tr>
+					<td><b>Api Token</b></td>
+					<td><?php echo $this->getConfig('apiToken')?></td> 
+				  </tr>
+				</table>
+				</div>
+			</div>
+			<?php }else{?>
+			
+			<!-- ACCOUNT SETUP TAB -->
+			<div class="page" id="accountsetup">
+			
+			<div class="mo2f_table_layout">
+			
+			<form id="register_miniorange" name="f" method="post" action="<?php echo $this->getadminurl('*/*/existingUser') ?>">
+				<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+				<div class="login_miniorange">
+					<div><h3>LOGIN WITH MINIORANGE</h3></div>	
+					<hr>
+					<div id="panel1">
+						<div><b>Please Login with your miniOrange credentials</b></div><br />
+						<table class="table">
+							<tr>
+							<td><b><font color="#FF0000">*</font>Email:</b></td>
+							<td><input class="" type="email" name="loginemail"  id="loginemail" autofocus="true" required placeholder="person@example.com" style="width:400px;" value="<?php echo Mage::getSingleton('admin/session')->getEnteredEmail(); ?>"/></td>
+							</tr>
+							<tr>
+							<td><b><font color="#FF0000">*</font>Password:</b></td>
+							 <td><input class="" type="password" name="loginpassword" style="width:400px;" placeholder="Enter your password" pattern="[a-zA-Z0-9!@#$%^&*]{6,24}"/></td>
+							</tr>
+						</table>
+						<br>
+						<div class="button-align"><input type="submit" name="submit" value="Submit" class="" /></div>
+						<div class="button-align"><input type="submit" name="submit" value="Forgot Password?" class="" /></div>
+					</div>
+				</div>
+			</form>
+			
+			</div>
+			
+			</div>
+			<?php }?>
+			
+			<!-- Social Login SETUP -->
+			<div class="page" id="sociallogin">
+				<form id="form-apps" name="form-apps" method="post" action="<?php echo $this->getadminurl('*/*/saveSocialLoginConf') ?>">
+				<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+				<div id="twofactor_list" class="mo2f_table_layout">
+					<h3>Social Login </h3><hr>
+					<p style="font-size:14px">Select applications to enable login for your users. Customize your login icons using a range of shapes, themes and sizes. You can choose different places to display these icons and also customize redirect url after login.</p>
+					<input type="submit" name="submit" value="Save" style="width:100px;float:right;margin-right:2%" class="button button-primary button-large">
+					<br><h3>Select Apps</h3>
+					<p>Select applications to enable social login</p>
+					<table style="width:100%;display: table;">
+						<tbody><tr>
+							<td style="width:25%"><input type="checkbox" id="facebook_enable" class="app_enable" name="mo_openid_facebook_enable" value="1" onchange="previewLoginIcons();" <?php if($this->getConfig('facebookEnable')) echo "checked"; ?>><b>Facebook</b>
+							</td>
+							<td style="width:25%">
+							<input type="checkbox" id="google_enable" class="app_enable" name="mo_openid_google_enable" value="1" onchange="previewLoginIcons();" <?php if($this->getConfig('googleEnable')) echo "checked"; ?>><b>Google</b>
+							</td>
+							<td style="width:25%">
+							<input type="checkbox" id="twitter_enable" class="app_enable" name="mo_openid_twitter_enable" value="1" onchange="previewLoginIcons();" <?php if($this->getConfig('twitterEnable')) echo "checked"; ?>><b>Twitter</b>
+							</td>
+							<td style="width:25%">
+							<input type="checkbox" id="instagram_enable" class="app_enable" name="mo_openid_instagram_enable" value="1" onchange="previewLoginIcons();" <?php if($this->getConfig('instagramEnable')) echo "checked"; ?>><b>Instagram</b>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<input type="checkbox" id="linkedin_enable" class="app_enable" name="mo_openid_linkedin_enable" value="1" onchange="previewLoginIcons();" <?php if($this->getConfig('linkedinEnable')) echo "checked"; ?>><b>LinkedIn</b>
+							</td>
+							<td>
+							<input type="checkbox" id="amazon_enable" class="app_enable" name="mo_openid_amazon_enable" value="1" onchange="previewLoginIcons();" <?php if($this->getConfig('amazonEnable')) echo "checked"; ?>><b>Amazon</b>
+							</td>
+							<td>
+							<input type="checkbox" id="salesforce_enable" class="app_enable" name="mo_openid_salesforce_enable" value="1" onchange="previewLoginIcons();" <?php if($this->getConfig('salesforceEnable')) echo "checked"; ?>><b>Salesforce</b>
+							</td>
+							<td>
+							<input type="checkbox" id="windowslive_enable" class="app_enable" name="mo_openid_windowslive_enable" value="1" onchange="previewLoginIcons();" <?php if($this->getConfig('windowsliveEnable')) echo "checked"; ?>><b>Windows Live</b>
+							</td>
+						</tr>
+						
+					</tbody></table>
+					
+					<br><hr><br>
+					<h3>Customize Login Icons</h3>
+					<p>Customize shape, theme and size of social login icons</p>
+
+					<?php
+						$iconSpace = $this->getConfig('iconSpace');
+						if(!$iconSpace) $iconSpace = '4'; 
+						$iconCustomSize = $this->getConfig('iconCustomSize');
+						if(!$iconCustomSize) $iconCustomSize = '35'; 
+						$iconCustomWidth = $this->getConfig('iconCustomWidth');
+						if(!$iconCustomWidth) $iconCustomWidth = '200'; 
+						$iconCustomHeight = $this->getConfig('iconCustomHeight');
+						if(!$iconCustomHeight) $iconCustomHeight = '35'; 
+						$loginCustomTheme = $this->getConfig('loginCustomTheme');
+						$loginTheme = $this->getConfig('loginTheme');
+						$iconCustomColor = $this->getConfig('iconCustomColor');
+						if(!$iconCustomColor) $iconCustomColor = '#0000FF'; 
+					?>
+					<table style="width:100%;display: table;">
+						<tbody><tr>
+						<td>
+							<b>Shape</b>
+							<b style="margin-left:130px;">Theme</b>
+							<b style="margin-left:130px;">Space between Icons</b>
+							<b style="margin-left:86px;">Size of Icons</b>
+						</td>
+						</tr>
+						<tr><td class="mo_openid_table_td_checkbox">
+							<input type="radio" name="mo_openid_login_theme" value="circle" onclick="checkLoginButton();moLoginPreview(document.getElementById('mo_login_icon_size').value ,'circle',setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value)" style="width: auto;" checked>Round
+								
+						<span style="margin-left:106px;">
+							<input type="radio" id="mo_openid_login_default_radio" name="mo_openid_login_custom_theme" value="default" onclick="checkLoginButton();moLoginPreview(setSizeOfIcons(), setLoginTheme(),'default',document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,document.getElementById('mo_login_icon_height').value)" checked>Default
+							
+						</span>
+						
+						<span style="margin-left:111px;">
+								<input style="width:50px" onkeyup="moLoginSpaceValidate(this)" id="mo_login_icon_space" name="mo_login_icon_space" type="text" value="<?php echo $iconSpace; ?>">
+								<input id="mo_login_space_plus" type="button" value="+" onmouseup="document.getElementById('mo_login_icon_space').value=parseInt(document.getElementById('mo_login_icon_space').value)+1;moLoginPreview(setSizeOfIcons() ,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value)">
+								<input id="mo_login_space_minus" type="button" value="-" onmouseup="document.getElementById('mo_login_icon_space').value=parseInt(document.getElementById('mo_login_icon_space').value)-1;moLoginPreview(setSizeOfIcons()  ,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value)">
+						</span>
+							
+							
+						<span id="commontheme" style="margin-left:95px">
+						<input style="width:50px" id="mo_login_icon_size" onkeyup="moLoginSizeValidate(this)" name="mo_login_icon_custom_size" type="text" value="<?php if($iconCustomSize) echo $iconCustomSize; else echo '35'; ?>">
+						<input id="mo_login_size_plus" type="button" value="+" onmouseup="document.getElementById('mo_login_icon_size').value=parseInt(document.getElementById('mo_login_icon_size').value)+1;moLoginPreview(document.getElementById('mo_login_icon_size').value ,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value)">
+						<input id="mo_login_size_minus" type="button" value="-" onmouseup="document.getElementById('mo_login_icon_size').value=parseInt(document.getElementById('mo_login_icon_size').value)-1;moLoginPreview(document.getElementById('mo_login_icon_size').value ,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value)">
+						
+						</span>
+						<span style="margin-left: 95px; display: none;" class="longbuttontheme">Width:&nbsp;
+						<input style="width:50px" id="mo_login_icon_width" onkeyup="moLoginWidthValidate(this)" name="mo_login_icon_custom_width" type="text" value="<?php echo $iconCustomWidth;?>">
+						<input id="mo_login_width_plus" type="button" value="+" onmouseup="document.getElementById('mo_login_icon_width').value=parseInt(document.getElementById('mo_login_icon_width').value)+1;moLoginPreview(document.getElementById('mo_login_icon_width').value ,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,document.getElementById('mo_login_icon_height').value)">
+						<input id="mo_login_width_minus" type="button" value="-" onmouseup="document.getElementById('mo_login_icon_width').value=parseInt(document.getElementById('mo_login_icon_width').value)-1;moLoginPreview(document.getElementById('mo_login_icon_width').value ,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,document.getElementById('mo_login_icon_height').value)">
+						
+						</span>
+						
+						
+						</td>			
+				</tr>
+				
+					<tr>
+						<td class="mo_openid_table_td_checkbox">
+						<input type="radio" name="mo_openid_login_theme" value="oval" onclick="checkLoginButton();moLoginPreview(document.getElementById('mo_login_icon_size').value,'oval',setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,document.getElementById('mo_login_icon_size').value )" style="width: auto;" <?php if($loginTheme=='oval') echo "checked"; ?>>Rounded Edges	
+
+						<span style="margin-left:50px;">
+								<input type="radio" id="mo_openid_login_custom_radio" name="mo_openid_login_custom_theme" value="custom" onclick="checkLoginButton();moLoginPreview(setSizeOfIcons(), setLoginTheme(),'custom',document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,document.getElementById('mo_login_icon_height').value)" 
+								<?php if($loginCustomTheme=='custom') echo "checked"; ?> >Custom Background*
+										
+								</span>	
+										
+							<span style="margin-left: 256px; display: none;" class="longbuttontheme">Height:
+						<input style="width:50px" id="mo_login_icon_height" onkeyup="moLoginHeightValidate(this)" name="mo_login_icon_custom_height" type="text" value="<?php if($iconCustomHeight) echo $iconCustomHeight; else echo '35'; ?>">
+						<input id="mo_login_height_plus" type="button" value="+" onmouseup="document.getElementById('mo_login_icon_height').value=parseInt(document.getElementById('mo_login_icon_height').value)+1;moLoginPreview(document.getElementById('mo_login_icon_width').value,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,document.getElementById('mo_login_icon_height').value)">
+						<input id="mo_login_height_minus" type="button" value="-" onmouseup="document.getElementById('mo_login_icon_height').value=parseInt(document.getElementById('mo_login_icon_height').value)-1;moLoginPreview(document.getElementById('mo_login_icon_width').value,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,document.getElementById('mo_login_icon_height').value)">
+						
+						</span>
+						</td>
+				</tr>
+				
+					<tr>
+						<td class="mo_openid_table_td_checkbox">
+								<input type="radio" name="mo_openid_login_theme" value="square" onclick="checkLoginButton();moLoginPreview(document.getElementById('mo_login_icon_size').value ,'square',setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,document.getElementById('mo_login_icon_size').value )" style="width: auto;" <?php if($loginTheme=='square') echo "checked"; ?>>Square
+							
+								<span style="margin-left:113px;">
+									<input type="color" name="mo_login_icon_custom_color" id="mo_login_icon_custom_color" value="<?php echo $iconCustomColor;?>" onchange="moLoginPreview(setSizeOfIcons(), setLoginTheme(),'custom',document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value)">
+								</span>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="mo_openid_table_td_checkbox">
+						<input type="radio" id="iconwithtext" name="mo_openid_login_theme" value="longbutton" onclick="checkLoginButton();moLoginPreview(document.getElementById('mo_login_icon_width').value ,'longbutton',setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,document.getElementById('mo_login_icon_height').value)" style="width: auto;" <?php if($loginTheme=='longbutton') echo "checked"; ?>>Long Button with Text</td>
+					</tr>
+					
+					</tbody></table>
+					
+					
+					<br><h3>Preview : </h3>
+					<span hidden id="no_apps_text">No apps selected</span>
+					<!-- <img src='<?php echo $this->getIconImage('facebook') ?>' />-->
+					
+					
+					<div>
+						<img class="mo_login_icon_preview" id="mo_login_icon_preview_google" src="<?php echo $this->getIconImage('google') ?>" />
+						<img class="mo_login_icon_preview" id="mo_login_icon_preview_facebook" src="<?php echo $this->getIconImage('facebook') ?>" />
+						<img class="mo_login_icon_preview" id="mo_login_icon_preview_twitter" src="<?php echo $this->getIconImage('twitter') ?>" />
+						<img class="mo_login_icon_preview" id="mo_login_icon_preview_instagram" src="<?php echo $this->getIconImage('instagram') ?>" />
+						<img class="mo_login_icon_preview" id="mo_login_icon_preview_linkedin" src="<?php echo $this->getIconImage('linkedin') ?>" />
+						<img class="mo_login_icon_preview" id="mo_login_icon_preview_amazon" src="<?php echo $this->getIconImage('amazon') ?>" />
+						<img class="mo_login_icon_preview" id="mo_login_icon_preview_salesforce" src="<?php echo $this->getIconImage('salesforce') ?>" />
+						<img class="mo_login_icon_preview" id="mo_login_icon_preview_windowslive" src="<?php echo $this->getIconImage('windowslive') ?>" />
+					</div>
+				
+					
+					<div>
+					
+					<a id="mo_login_button_preview_google" class="btn btn-block btn-defaulttheme btn-social btn-google btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: 6px; padding-bottom: 6px; margin-bottom: <?php echo $iconSpace.'px'; ?>"> <i class="fa fa-google-plus" style="padding-top: 0px;"></i>Login with Google</a>
+					<a id="mo_login_button_preview_facebook" class="btn btn-block btn-defaulttheme btn-social btn-facebook btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: 6px; padding-bottom: 6px; margin-bottom: <?php echo $iconSpace.'px'; ?>"> <i class="fa fa-facebook" style="padding-top: 0px;"></i>Login with Facebook</a>
+					<a id="mo_login_button_preview_twitter" class="btn btn-block btn-defaulttheme btn-social btn-twitter btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: 6px; padding-bottom: 6px; margin-bottom: <?php echo $iconSpace.'px'; ?> "> <i class="fa fa-twitter" style="padding-top: 0px;"></i>Login with Twitter</a>
+					<a id="mo_login_button_preview_instagram" class="btn btn-block btn-defaulttheme btn-social btn-instagram btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: 6px; padding-bottom: 6px; margin-bottom: <?php echo $iconSpace.'px'; ?>"> <i class="fa fa-instagram" style="padding-top: 0px;"></i>Login with Instagram</a>
+					<a id="mo_login_button_preview_linkedin" class="btn btn-block btn-defaulttheme btn-social btn-linkedin btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: 6px; padding-bottom: 6px; margin-bottom: <?php echo $iconSpace.'px'; ?>"> <i class="fa fa-linkedin" style="padding-top: 0px;"></i>Login with LinkedIn</a>
+					<a id="mo_login_button_preview_amazon" class="btn btn-block btn-defaulttheme btn-social btn-soundcloud btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: 6px; padding-bottom: 6px; margin-bottom: <?php echo $iconSpace.'px'; ?>"> <i class="fa fa-amazon" style="padding-top: 0px;"></i>Login with Amazon</a>
+					<a id="mo_login_button_preview_salesforce" class="btn btn-block btn-defaulttheme btn-social btn-vimeo btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: 6px; padding-bottom: 6px; margin-bottom: <?php echo $iconSpace.'px'; ?>"> <i class="fa fa-cloud" style="padding-top: 0px;"></i>Login with Salesforce</a>
+					<a id="mo_login_button_preview_windowslive" class="btn btn-block btn-defaulttheme btn-social btn-microsoft btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: 6px; padding-bottom: 6px; margin-bottom:<?php echo $iconSpace.'px'; ?> "> <i class="fa fa-windows" style="padding-top: 0px;"></i>Login with Windows</a>
+					</div>
+					
+					
+				<div>
+				<i class="mo_custom_login_icon_preview fa fa-google-plus" id="mo_custom_login_icon_preview_google"  style="color:#ffffff;text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_login_icon_preview fa fa-facebook" id="mo_custom_login_icon_preview_facebook"  style="color:#ffffff;text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_login_icon_preview fa fa-twitter" id="mo_custom_login_icon_preview_twitter" style="color:#ffffff;text-align:center;margin-top:5px;" ></i>
+				<i class="mo_custom_login_icon_preview fa fa-instagram" id="mo_custom_login_icon_preview_instagram" style="color:#ffffff;text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_login_icon_preview fa fa-linkedin" id="mo_custom_login_icon_preview_linkedin" style="color:#ffffff;text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_login_icon_preview fa fa-amazon" id="amazoncustom" style="color:#ffffff;text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_login_icon_preview fa fa-cloud" id="salesforcecustom" style="margin-bottom:-10px;color:#ffffff;text-align:center;margin-top:5px;" ></i>
+				<i class="mo_custom_login_icon_preview fa fa-windows" id="mo_custom_login_icon_preview_windows" style="color:#ffffff;text-align:center;margin-top:5px;" ></i>
+				</div>
+				
+				<div>
+					<a id="mo_custom_login_button_preview_google" class="btn btn-block btn-customtheme btn-social   btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: 6px;padding-bottom: 6px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;"> <i class="fa fa-google-plus"></i>Login with Google</a>
+					<a id="mo_custom_login_button_preview_facebook" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: 6px;padding-bottom: 6px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;" > <i class="fa fa-facebook"></i>Login with Facebook</a>
+					<a id="mo_custom_login_button_preview_twitter" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: 6px;padding-bottom: 6px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;" > <i class="fa fa-twitter"></i>Login with Twitter</a>
+					<a id="mo_custom_login_button_preview_instagram" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: 6px;padding-bottom: 6px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;" > <i class="fa fa-instagram"></i>Login with Instagram</a>
+					<a id="mo_custom_login_button_preview_linkedin" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: 6px;padding-bottom: 6px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;" > <i class="fa fa-linkedin"></i>Login with LinkedIn</a>
+					<a id="mo_custom_login_button_preview_amazon" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: 6px;padding-bottom: 6px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;" > <i class="fa fa-amazon"></i>Login with Amazon</a>
+					<a id="mo_custom_login_button_preview_salesforce" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: 6px;padding-bottom: 6px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;" > <i class="fa fa-cloud"></i>Login with Salesforce</a>
+					<a id="mo_custom_login_button_preview_windows" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: 6px;padding-bottom: 6px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;" > <i class="fa fa-windows"></i>Login with Windows</a>
+				</div>
+
+				<br><br>
+				
+			</div>
+			</form>
+		</div>
+			
+			<!--Social SHARING SETTINGS TAB-->
+			<div class="page" id="socialsharing">
+				<div class="mo2f_table_layout">
+					<div><h3>Social Sharing</h3><hr></div>
+					<form name="f" id="settings_form" method="post" action="<?php echo $this->getadminurl('*/*/saveSocialSharingConf') ?>">
+						<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />	
+						
+						<p style="font-size:14px">Select applications to add share icons. Customize sharing icons by using a range of shapes, themes and sizes to suit to your website. You can also choose different places to display these icons. Additionally, place vertical floating icons on your pages.</p>
+						<input type="submit" name="submit" value="Save" style="width:100px;float:right;margin-right:2%" class="button button-primary button-large">
+						<h3>Select Social Apps</h3>
+						<p>Select applications to enable social sharing</p>
+						<table style="width:100%;display: table;">
+						<tbody><tr>
+							<td style="width:20%">
+								<input type="checkbox" id="facebook_share_enable" class="app_enable" name="mo_openid_facebook_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('facebookShareEnable')) echo "checked"; ?>>
+								<strong>Facebook</strong>
+							</td>
+							<td style="width:20%">
+								<input type="checkbox" id="twitter_share_enable" class="app_enable" name="mo_openid_twitter_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('twitterShareEnable')) echo "checked"; ?>>
+								<strong>Twitter </strong>
+							</td>
+							<td style="width:20%">
+								<input type="checkbox" id="google_share_enable" class="app_enable" name="mo_openid_google_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('googleShareEnable')) echo "checked"; ?>>
+								<strong>Google</strong>
+							</td>
+							
+							<td style="width:20%">
+								<input type="checkbox" id="vkontakte_share_enable" class="app_enable" name="mo_openid_vkontakte_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('vkontakteShareEnable')) echo "checked"; ?>>
+								<strong>Vkontakte</strong>
+							</td>
+							<td style="width:20%">
+								<input type="checkbox" id="tumblr_share_enable" class="app_enable" name="mo_openid_tumblr_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('tumblrShareEnable')) echo "checked"; ?>>
+								<strong>Tumblr </strong>
+							</td>
+						</tr>
+						<tr>
+							<td style="width:20%">
+								<input type="checkbox" id="stumble_share_enable" class="app_enable" name="mo_openid_stumble_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('stumbleShareEnable')) echo "checked"; ?>>
+								<strong>StumbleUpon</strong>
+							</td>
+							<td style="width:20%">
+								<input type="checkbox" id="linkedin_share_enable" class="app_enable" name="mo_openid_linkedin_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('linkedinShareEnable')) echo "checked"; ?>>
+								<strong>LinkedIn</strong>
+							</td>
+							<td style="width:20%">
+								<input type="checkbox" id="reddit_share_enable" class="app_enable" name="mo_openid_reddit_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('redditShareEnable')) echo "checked"; ?>>
+								<strong>Reddit </strong>
+							</td>
+							<td style="width:20%">
+								<input type="checkbox" id="pinterest_share_enable" class="app_enable" name="mo_openid_pinterest_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('pinterestShareEnable')) echo "checked"; ?>>
+								<strong>Pinterest </strong>
+							</td>
+							<td style="width:20%">
+								<input type="checkbox" id="pocket_share_enable" class="app_enable" name="mo_openid_pocket_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('pocketShareEnable')) echo "checked"; ?>>
+								<strong>Pocket</strong>
+							</td>
+						</tr>
+						<tr>
+							<td style="width:20%">
+								<input type="checkbox" id="digg_share_enable" class="app_enable" name="mo_openid_digg_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('diggShareEnable')) echo "checked"; ?>>
+								<strong>Digg</strong>
+							</td>
+							<td style="width:20%">
+							<input type="checkbox" id="delicious_share_enable" class="app_enable" name="mo_openid_delicious_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('deliciousShareEnable')) echo "checked"; ?>>
+							<strong>Delicious</strong></td>
+							<td style="width:20%">
+								<input type="checkbox" id="odnoklassniki_share_enable" class="app_enable" name="mo_openid_odnoklassniki_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('odnoklassnikiShareEnable')) echo "checked"; ?>>
+								<strong>Odnoklassniki</strong>
+							</td>
+						</tr>
+						</tbody></table>
+						<br><hr><br>
+						<h3>Customize Sharing Icons</h3>
+						<p>Customize shape, size and background for sharing icons</p>
+						
+						
+					<?php
+						$shareIconTheme = $this->getConfig('shareIconTheme');
+						$shareIconCustomTheme = $this->getConfig('shareIconCustomTheme');
+						
+						$shareIconCustomColor = $this->getConfig('shareIconCustomColor');
+						if(!$shareIconCustomColor) $shareIconCustomColor = '#000';
+						
+						$shareIconCustomFont = $this->getConfig('shareIconCustomFont');
+						if(!$shareIconCustomFont) $shareIconCustomFont = '#000'; 
+						
+						$shareIconSpace = $this->getConfig('shareIconSpace');
+						if(!$shareIconSpace) $shareIconSpace = '4'; 
+						
+						$shareIconSize = $this->getConfig('shareIconSize');
+						if(!$shareIconSize) $shareIconSize = '35'; 
+					?>
+					
+						<table style="width:100%;display:table">
+						<tbody><tr>
+							<td><b>Shape</b></td>
+							<td><b>Theme</b></td>
+							<td><b>Space between Icons</b></td>
+							<td><b>Size of Icons</b></td>
+						</tr>
+						
+						<tr>
+							<td style="width:inherit;"> <!-- Shape radio buttons -->
+								<!-- Round -->
+								<input type="radio" id="mo_openid_share_theme_circle" name="mo_openid_share_theme" value="circle" onclick="tempHorShape = 'circle';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, 'circle', setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value, document.getElementById('mo_sharing_icon_custom_font').value)" checked="checked">Round
+								
+							</td>
+							<td><!-- Theme radio buttons -->
+								<!-- Default -->
+								<input type="radio" id="mo_openid_default_background_radio" name="mo_openid_share_custom_theme" value="default" onclick="tempHorTheme = 'default';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(), 'default', document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value, document.getElementById('mo_sharing_icon_custom_font').value)" checked="checked">Default
+							</td>
+							<td> <!-- Size between icons buttons-->
+								<input style="width:50px;height:14px;border-radius: 0px;" id="mo_sharing_icon_space" name="mo_sharing_icon_space" type="text" value="<?php echo $shareIconSpace?>" onkeyup="moSharingSpaceValidate(this)">
+								<input id="mo_sharing_space_plus" type="button" value="+" onmouseup="document.getElementById('mo_sharing_icon_space').value=parseInt(document.getElementById('mo_sharing_icon_space').value)+1;moSharingPreview('horizontal',document.getElementById('mo_sharing_icon_size').value ,setTheme(),setCustomTheme(),document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value)" style="width:auto" >
+								<input id="mo_sharing_space_minus" type="button" value="-" onmouseup="document.getElementById('mo_sharing_icon_space').value=parseInt(document.getElementById('mo_sharing_icon_space').value)-1;moSharingPreview('horizontal',document.getElementById('mo_sharing_icon_size').value ,setTheme(),setCustomTheme(),document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value)" style="width:auto">
+							</td>
+							<td> <!-- Size buttons-->
+								<input style="width:50px;height: 14px;border-radius: 0px;" id="mo_sharing_icon_size" onkeyup="moSharingSizeValidate(this)" name="mo_sharing_icon_custom_size" type="text" value="<?php echo $shareIconSize?>">
+					
+								<input id="mo_sharing_size_plus" type="button" value="+" onmouseup="document.getElementById('mo_sharing_icon_size').value=parseInt(document.getElementById('mo_sharing_icon_size').value)+1;tempHorSize = document.getElementById('mo_sharing_icon_size').value;moSharingPreview('horizontal',document.getElementById('mo_sharing_icon_size').value , setTheme(), setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value,document.getElementById('mo_sharing_icon_custom_font').value)"  style="width:auto">
+					
+								<input id="mo_sharing_size_minus" type="button" value="-" onmouseup="document.getElementById('mo_sharing_icon_size').value=parseInt(document.getElementById('mo_sharing_icon_size').value)-1;tempHorSize = document.getElementById('mo_sharing_icon_size').value;moSharingPreview('horizontal',document.getElementById('mo_sharing_icon_size').value ,setTheme(), setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value, document.getElementById('mo_sharing_icon_custom_font').value)" style="width:auto">
+							</td>
+						</tr>
+						<tr>
+						<td> <!-- Shape radio buttons -->
+							<!-- Rounded Edges -->
+							<input type="radio" name="mo_openid_share_theme" value="oval" onclick="tempHorShape = 'circle';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, 'oval', setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value)" <?php if($shareIconTheme=='oval') echo "checked"; ?>>Rounded Edges
+						</td>
+						<td> <!-- Theme radio buttons -->
+							<!-- Custom background -->
+							
+							<input type="radio" id="mo_openid_custom_background_radio" name="mo_openid_share_custom_theme" value="custom" onclick="tempHorTheme = 'custom';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(),'custom',document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value)" <?php if($shareIconCustomTheme=='custom') echo "checked"; ?>>Custom background*
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td> <!-- Shape radio buttons -->
+							<!-- Square -->
+							<input type="radio" name="mo_openid_share_theme" value="square" onclick="tempHorShape = 'square';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(), setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value)" <?php if($shareIconTheme=='square') echo "checked"; ?>>Square
+						</td>
+						<td> <!-- Theme radio buttons -->
+							<!-- Custom background textbox -->
+							
+							<input id="mo_sharing_icon_custom_color" name="mo_sharing_icon_custom_color" value="<?php echo $shareIconCustomColor; ?>" onchange="moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(),setCustomTheme(),document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value,document.getElementById('mo_sharing_icon_custom_font').value)" type="color">
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td> <!-- Theme radio buttons -->
+							<!-- No background -->
+							<input type="radio" id="mo_openid_no_background_radio" name="mo_openid_share_custom_theme" value="customFont" onclick="tempHorTheme = 'custom';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(),'customFont',document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value,document.getElementById('mo_sharing_icon_custom_font').value)" <?php if($shareIconCustomTheme=='customFont') echo "checked"; ?>>No background*
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td> <!-- Theme radio buttons -->
+							<!-- No background textbox-->
+							<input id="mo_sharing_icon_custom_font" name="mo_sharing_icon_custom_font" type="color" value="<?php echo $shareIconCustomFont; ?>" onchange="moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(),setCustomTheme(),document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value,document.getElementById('mo_sharing_icon_custom_font').value,document.getElementById('mo_sharing_icon_custom_font').value)" >
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+						</tbody></table>
+					
+					
+				<b>Preview: </b><br/>
+				<span hidden id="no_apps_text">No apps selected</span>
+				
+				<div>
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_facebook" src="<?php echo $this->getIconImage('facebook') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_twitter" src="<?php echo $this->getIconImage('twitter') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_google" src="<?php echo $this->getIconImage('google') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_vk" src="<?php echo $this->getIconImage('vk') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_tumblr" src="<?php echo $this->getIconImage('tumblr') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_stumble" src="<?php echo $this->getIconImage('stumble') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_linkedin" src="<?php echo $this->getIconImage('linkedin') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_reddit" src="<?php echo $this->getIconImage('reddit') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_pinterest" src="<?php echo $this->getIconImage('pininterest') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_pocket" src="<?php echo $this->getIconImage('pocket') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_digg" src="<?php echo $this->getIconImage('digg') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_delicious" src="<?php echo $this->getIconImage('delicious') ?>" />
+				<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_odnoklassniki" src="<?php echo $this->getIconImage('odnoklassniki') ?>" />
+				</div>
+		
+				<div>
+				<i class="mo_custom_sharing_icon_preview fa fa-facebook" id="mo_custom_sharing_icon_preview_facebook"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-twitter" id="mo_custom_sharing_icon_preview_twitter" style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;" ></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-google-plus" id="mo_custom_sharing_icon_preview_google"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-vk" id="mo_custom_sharing_icon_preview_vk"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-tumblr" id="mo_custom_sharing_icon_preview_tumblr"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-stumbleupon" id="mo_custom_sharing_icon_preview_stumble"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-linkedin" id="mo_custom_sharing_icon_preview_linkedin" style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-reddit" id="mo_custom_sharing_icon_preview_reddit"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-pinterest" id="mo_custom_sharing_icon_preview_pinterest"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-get-pocket" id="mo_custom_sharing_icon_preview_pocket"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-digg" id="mo_custom_sharing_icon_preview_digg"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-delicious" id="mo_custom_sharing_icon_preview_delicious"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				<i class="mo_custom_sharing_icon_preview fa fa-odnoklassniki" id="mo_custom_sharing_icon_preview_odnoklassniki"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+				</div>
+				
+				<div>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-facebook" id="mo_custom_sharing_icon_font_preview_facebook"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-twitter" id="mo_custom_sharing_icon_font_preview_twitter" style="text-align:center;margin-top:5px;" ></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-google-plus" id="mo_custom_sharing_icon_font_preview_google"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-linkedin" id="mo_custom_sharing_icon_font_preview_linkedin" style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-pinterest" id="mo_custom_sharing_icon_font_preview_pinterest"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-reddit" id="mo_custom_sharing_icon_font_preview_reddit"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-vk" id="mo_custom_sharing_icon_font_preview_vk"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-tumblr" id="mo_custom_sharing_icon_font_preview_tumblr"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-stumbleupon" id="mo_custom_sharing_icon_font_preview_stumble"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-get-pocket" id="mo_custom_sharing_icon_font_preview_pocket"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-digg" id="mo_custom_sharing_icon_font_preview_digg"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-delicious" id="mo_custom_sharing_icon_font_preview_delicious"  style="text-align:center;margin-top:5px;"></i>
+				<i class="mo_custom_sharing_icon_font_preview fa fa-odnoklassniki" id="mo_custom_sharing_icon_font_preview_odnoklassniki"  style="text-align:center;margin-top:5px;"></i>
+				</div>
+				
+				
+				<br><br>
+					</form>
+				</div>
+			</div>
+				
+			<!--HOW IT WORKS TAB-->
+			<div class="page" id="pricing">
+				<input type="submit" name="submit" value="OK, Got It!" style="width:100px;float:right;margin-right:2%" class="button button-primary button-large" onclick="jQuery('#social-login-setup > a').click();">
+				<h3>Licensing Plans For Social Login</h3>
+				<p style="font-size:12px">Social Sharing is absolutely free for any number of users.</p><hr>
+				
+				<style>
+				.mo_openid_pricing_free_tab {
+					background-color: rgba(34, 153, 221, 0.82)!important;
+				}
+				.mo_openid_pricing_paid_tab {
+					background-color: #1a71a4 !important;
+				}
+				.mo_openid_pricing_header {
+					color: #fff !important;
+					font-size: 1.3em;
+					margin-top:8px;
+				}
+				.mo_openid_pricing_sub_header{
+					color: #fff !important;
+					font-size: 1.1em;
+				}
+				.mo_openid_thumbnail {
+					width: 260px;
+					padding: 4px;
+					margin-bottom: 10px;
+					line-height: 1.42857143;
+					background-color: #fff;
+					border: 1px solid #ddd;
+					border-radius: 4px;
+					-webkit-transition: border .2s ease-in-out;
+					-o-transition: border .2s ease-in-out;
+					transition: border .2s ease-in-out;
+					font-size: 15px !important;
+					color: #fff !important;
+					font-weight: bold !important;
+					text-align: center;
+				}
+				.mo_openid_thumbnail p{
+					font-size: 15px !important;
+					line-height: 1.5;
+					margin: 1em 0;
+				}
+				.mo_openid_pricing_table{
+					display: table;
+					width: 100%;
+				}
+				</style>
+				<table class="mo_openid_pricing_table">
+				<tbody><tr>
+					<td style="padding:0px"><div class="mo_openid_thumbnail mo_openid_pricing_free_tab">
+						<h3 class="mo_openid_pricing_header">Free</h3>
+						<h4 class="mo_openid_pricing_sub_header">( You are automatically on this plan )</h4>
+						<hr>
+						<p class="mo_openid_pricing_text">$0 / year</p>
+						<hr>
+						<p class="mo_openid_pricing_text">Upto 5000 unique users</p>
+						<hr>
+						<p><br></p>
+						<p class="mo_openid_pricing_text">All Social Apps</p>
+						<br>
+						<hr>
+						<p class="mo_openid_pricing_text">Basic Support by Email</p>
+					</div></td>
+					<td style="padding:0px"><div class="mo_openid_thumbnail mo_openid_pricing_paid_tab">
+						<h3 class="mo_openid_pricing_header">Best Value</h3>
+						<h4 class="mo_openid_pricing_sub_header">( Contact us to upgrade to this plan ) *</h4>
+						<hr>
+						<p class="mo_openid_pricing_text">Prices starting from $49 / year - $99 / year</p>
+						<hr>
+						<p class="mo_openid_pricing_text">5000 - 100,000 users</p>
+						<hr>
+						<p class="mo_openid_pricing_text">All features included here<br>
+						(All Social Apps, Social Analytics Dashboard Access, Extended Profile Data, Create Custom Apps )</p>
+						
+						<hr>
+						<p class="mo_openid_pricing_text">Premium Support Plans Available</p>
+					</div></td>
+					<td style="padding:0px"><div class="mo_openid_thumbnail mo_openid_pricing_free_tab">
+						<h3 class="mo_openid_pricing_header">Premium</h3>
+						<h4 class="mo_openid_pricing_sub_header">( Contact us to upgrade to this plan ) *</h4>
+						<hr>
+						<p class="mo_openid_pricing_text">Contact Us</p>
+						<hr>
+						<p class="mo_openid_pricing_text">More than 100,000 users  **</p>
+						<hr>
+						<p class="mo_openid_pricing_text">All features included here<br>
+						(All Social Apps, Social Analytics Dashboard Access, Extended Profile Data, Create Custom Apps)</p>
+						
+						<hr>
+						<p class="mo_openid_pricing_text">Premium Support Plans Available</p>
+					</div></td>
+				</tr>
+				</tbody></table>
+
+				<p>* You can mail us at <a href="mailto:info@miniorange.com"><b>info@miniorange.com</b></a> or submit the support form on right hand-side to contact us.</p>
+				<p>** Volume discounts are available.</p>
+			</div>
+			
+			<!-- HELP AND TROUBLESHOOTING TAB-->
+			<div class="page" id="helptrouble">	
+				
+				<div class="mo2f_table_layout">
+					<ul class="mo2f_faqs">
+						<span class="btn-link"  href=""><li id="cURLfaq1">How to enable PHP cURL extension? (Pre-requisite)</li></span>
+						<div class="collapse" id="question1">
+							<ol>
+							<li>Open php.ini.</li>
+							<li>Search for extension=php_curl.dll. Uncomment it by removing the semi-colon( ; ) in front of it.</li>
+							<li>Restart the Apache Server.</li>
+							</ol>
+						<br>For any further queries, please submit a query on right hand side in our <b>Support Section</b>.
+						</div>
+						<hr>
+						
+						<span class="btn-link"  href=""><li id="cURLfaq2">I am getting error - curl_setopt(): CURLOPT_FOLLOWLOCATION cannot be activated when an open_basedir is set?</li></span>
+						<div class="collapse" id="question2">
+							<ol>
+							<li>Just setsafe_mode = Off in your php.ini file (it's usually in /etc/ on the server). If that's already off, then look around for the open_basedir in the php.ini file, and change it to open_basedir = .</li>
+							</ol>
+						<br>For any further queries, please submit a query on right hand side in our <b>Support Section</b>.
+						</div>
+						<hr>
+						
+						<span class="btn-link"  href=""><li id="otpfaq">I did not recieve OTP. What should I do?</li></span>
+						<div class="collapse" id="question3">
+							<ol>
+							<li>The OTP is sent as an email to your email address with which you have registered with miniOrange. If you can't see the email from miniOrange in your mails, please make sure to check your SPAM folder. If you don't see an email even in SPAM folder, contact us at info@miniorange.com.</li>
+							</ol>
+						<br>For any further queries, please submit a query on right hand side in our <b>Support Section</b>.
+						</div>
+						<hr>
+						
+						<span class="btn-link"  href=""><li id="otpfaq">After entering OTP, I get Invalid OTP. What should I do?</li></span>
+						<div class="collapse" id="question4">
+							<ol>
+							<li>You should click on Resend OTP link to get another OTP. Now enter this OTP to validate. If it still does not work, contact us at info@miniorange.com.</li>
+							</ol>
+							<br>For any further queries, please submit a query on right hand side in our <b>Support Section</b>.
+						</div>
+						<hr>
+						
+						<span class="btn-link"  href=""><li id="otpfaq">I forgot the password of my miniOrange account. How can I reset it?</li></span>
+						<div class="collapse" id="question5">
+							<ol>
+							There are two cases according to the page you see -<br><br>
+							1. Login with miniOrange screen: You should click on forgot password link. You will get your new password on your email address which you have registered with miniOrange . Now you can login with the new password.<br><br>
+							2. Register with miniOrange screen: Enter your email ID and any random password in password and confirm password input box. This will redirect you to Login with miniOrange screen. Now follow first step.
+							</ol><br>
+							For any further queries, please submit a query on right hand side in our <b>Support Section</b>.
+						</div>
+						<hr>
+						
+						<span class="btn-link"  href=""><li id="sharingfaq">Why is sharing with some applications not working?</li></span>
+						<div class="collapse" id="question5">
+							<ol>
+							<li>This issue arises if your website is not publicly hosted. Facebook, for example looks for the URL to generate its preview for sharing. That does not work on localhost or any privately hosted URL.</li>
+							</ol><br>
+							For any further queries, please submit a query on right hand side in our <b>Support Section</b>.
+						</div>
+						<hr>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- END of Container Page -->
+		</div>
+		<!-- END of Container -->
+			
+		<!--SUPPORT TAB-->
+		<div id="minisupport">
+		 <ul class="navbar navbar-tabs">
+			<li id="mini_support" class="always-active"><a href="#minisupport" class="mini_support">Support</a></li>
+			</ul>
+				<div class="mo2f_support_layout">
+					<h3>SUPPORT</h3>
+					<hr>
+					<form name="f" method="post" action="<?php echo $this->getadminurl('*/*/supportSubmit') ?>">
+						<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+						<div><b>Need any help? Just send us a query so we can help you.</b><br /><br/></div>
+						<div>
+							<table>
+								<tr><td>
+									<input type="email" class="mo2f_table_textbox" id="query_email" name="query_email" value="<?php echo Mage::getSingleton('admin/session')->getUser()->getEmail() ?>" placeholder="Enter your email" required="true" />
+									</td>
+								</tr>
+								<tr><td>
+									<input type="text" class="mo2f_table_textbox" name="query_phone" id="query_phone" title="Phone with country code eg. +1xxxxxxxxxx" placeholder="Phone with country code eg. +1xxxxxxxxxx" value="<?php echo $this->getConfig('phone')?>" pattern="[\+]?[0-9]{1,4}\s?[0-9]{10}"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<textarea id="query" name="query" style="resize:vertical;height:143px;" onkeyup="mo2f_valid(this)" onblur="mo2f_valid(this)" onkeypress="mo2f_valid(this)" placeholder="Write your query here"></textarea>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="button-align">
+							<input type="submit" name="send_query" id="send_query" value="Submit Query" style="margin-bottom:3%;" class="button button-primary button-large" />
+						</div>
+					</form>
+					<br />			
+				</div>
+				<br>
+			</div>
+		</div>
+		
+		<script>
+		jQuery( document ).ready(function() {
+				
+				var tempHorSize = '<?php echo $iconCustomSize ?>';
+				var tempHorTheme = '<?php echo $loginTheme ?>';
+				var tempHorCustomTheme = '<?php echo $loginCustomTheme ?>';
+				var tempHorCustomColor = '<?php echo $iconCustomColor ?>';
+				var tempHorSpace = '<?php echo $iconSpace ?>';
+				var tempHorHeight = '<?php echo $iconCustomHeight ?>';
+				moLoginPreview(setSizeOfIcons(),tempHorTheme,tempHorCustomTheme,tempHorCustomColor,tempHorSpace,tempHorHeight);
+				checkLoginButton();		
+				<?php if( $this->getConfig('email')){ 
+					if(isset($_GET['q']) && $_GET['q']=='sharing'){ ?>
+					jQuery('#social-sharing-setup > a').click();
+				<?php } else{ ?>
+					jQuery('#social-login-setup > a').click();
+				<?php }
+				} ?>
+		});
+		function setLoginTheme(){return jQuery('input[name=mo_openid_login_theme]:checked', '#form-apps').val();}
+		function setLoginCustomTheme(){return jQuery('input[name=mo_openid_login_custom_theme]:checked', '#form-apps').val();}
+		function setSizeOfIcons(){
+			if((jQuery('input[name=mo_openid_login_theme]:checked', '#form-apps').val()) == 'longbutton'){
+				return document.getElementById('mo_login_icon_width').value;
+			}else{
+				return document.getElementById('mo_login_icon_size').value;
+			}
+		}
+		function moLoginPreview(t,r,l,p,n,h){
+			
+			//alert(t+" "+r+" "+l+" "+p+" "+n+" "+h);
+			if(l == 'default'){
+				if(r == 'longbutton'){
+					var a = "btn-defaulttheme";
+					jQuery("."+a).css("width",t+"px");
+					if(h>26){
+						jQuery("."+a).css("height","26px");
+						jQuery("."+a).css("padding-top",(h-26)/2+"px");
+						jQuery("."+a).css("padding-bottom",(h-26)/2+"px");
+					}else{
+						jQuery("."+a).css("height",h+"px");
+						jQuery("."+a).css("padding-top",(h-26)/2+"px");
+						jQuery("."+a).css("padding-bottom",(h-26)/2+"px");
+					}
+					//jQuery("."+a).css("height","26px");
+					//jQuery("."+a).css("padding-top",(h-26)/2+"px");
+					//jQuery("."+a).css("padding-bottom",(h-26)/2+"px");
+					jQuery(".fa").css("padding-top",(h-35)+"px");
+					jQuery("."+a).css("margin-bottom",n+"px");
+				}else{
+					var a="mo_login_icon_preview";
+					jQuery("."+a).css("margin-left",n+"px");
+					if(r=="circle"){
+						jQuery("."+a).css({height:t,width:t});
+						jQuery("."+a).css("borderRadius","999px");
+					}else if(r=="oval"){
+						jQuery("."+a).css("borderRadius","5px");
+						jQuery("."+a).css({height:t,width:t});
+					}else if(r=="square"){
+						jQuery("."+a).css("borderRadius","0px");
+						jQuery("."+a).css({height:t,width:t});
+					}
+				}
+			}
+			else if(l == 'custom'){
+				if(r == 'longbutton'){
+						var a = "btn-customtheme";
+						jQuery("."+a).css("width",(t)+"px");
+						if(h>26){
+							jQuery("."+a).css("height","26px");
+							jQuery("."+a).css("padding-top",(h-26)/2+"px");
+							jQuery("."+a).css("padding-bottom",(h-26)/2+"px");
+						}else{
+							jQuery("."+a).css("height",h+"px");
+							jQuery("."+a).css("padding-top",(h-26)/2+"px");
+							jQuery("."+a).css("padding-bottom",(h-26)/2+"px");
+						}
+						jQuery("."+a).css("margin-bottom",n+"px");
+						jQuery("."+a).css("background",p);
+				}else{
+					var a="mo_custom_login_icon_preview";
+					jQuery("."+a).css({height:t-8,width:t});
+					jQuery("."+a).css("padding-top","8px");
+					jQuery("."+a).css("margin-left",n+"px");
+					jQuery("."+a).css("background",p);
+					
+					if(r=="circle"){
+						jQuery("."+a).css("borderRadius","999px");
+					}else if(r=="oval"){
+						jQuery("."+a).css("borderRadius","5px");
+						}else if(r=="square"){
+						jQuery("."+a).css("borderRadius","0px");
+					}
+					jQuery("."+a).css("font-size",(t-16)+"px");
+				}
+			}
+			previewLoginIcons();
+		}
+
+		function checkLoginButton(){
+			if(document.getElementById('iconwithtext').checked) {
+				if(setLoginCustomTheme() == 'default'){
+					jQuery(".mo_login_icon_preview").hide();
+					jQuery(".mo_custom_login_icon_preview").hide();
+					jQuery(".btn-customtheme").hide();
+					jQuery(".btn-defaulttheme").show();
+				}else if(setLoginCustomTheme() == 'custom'){
+					jQuery(".mo_login_icon_preview").hide();
+					jQuery(".mo_custom_login_icon_preview").hide();
+					jQuery(".btn-defaulttheme").hide();
+					jQuery(".btn-customtheme").show();
+				}
+				jQuery("#commontheme").hide();
+				jQuery(".longbuttontheme").show();
+			}else {
+				if(setLoginCustomTheme() == 'default'){
+					jQuery(".mo_login_icon_preview").show();
+					jQuery(".btn-defaulttheme").hide();
+					jQuery(".btn-customtheme").hide();
+					jQuery(".mo_custom_login_icon_preview").hide();
+				}else if(setLoginCustomTheme() == 'custom'){
+					jQuery(".mo_login_icon_preview").hide();
+					jQuery(".mo_custom_login_icon_preview").show();
+					jQuery(".btn-defaulttheme").hide();
+					jQuery(".btn-customtheme").hide();
+				}
+				jQuery("#commontheme").show();
+				jQuery(".longbuttontheme").hide();
+			}
+		
+			previewLoginIcons();
+	}	
+	
+	function previewLoginIcons() {
+			var flag = 0;
+			if (document.getElementById('google_enable').checked)   {
+				flag = 1;
+				if(document.getElementById('mo_openid_login_default_radio').checked && !document.getElementById('iconwithtext').checked)
+					jQuery("#mo_login_icon_preview_google").show();
+				if(document.getElementById('mo_openid_login_custom_radio').checked && !document.getElementById('iconwithtext').checked)
+					jQuery("#mo_custom_login_icon_preview_google").show();
+				if(document.getElementById('mo_openid_login_default_radio').checked && document.getElementById('iconwithtext').checked)
+					jQuery("#mo_login_button_preview_google").show();
+				if(document.getElementById('mo_openid_login_custom_radio').checked && document.getElementById('iconwithtext').checked)
+					jQuery("#mo_custom_login_button_preview_google").show();
+			} else if(!document.getElementById('google_enable').checked){
+				jQuery("#mo_login_icon_preview_google").hide();
+				jQuery("#mo_custom_login_icon_preview_google").hide();
+				jQuery("#mo_login_button_preview_google").hide();
+				jQuery("#mo_custom_login_button_preview_google").hide();
+			}
+			
+			if (document.getElementById('facebook_enable').checked) {
+					flag = 1;
+					if(document.getElementById('mo_openid_login_default_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_icon_preview_facebook").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_icon_preview_facebook").show();
+					if(document.getElementById('mo_openid_login_default_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_button_preview_facebook").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_button_preview_facebook").show();
+				}else if(!document.getElementById('facebook_enable').checked){
+					jQuery("#mo_login_icon_preview_facebook").hide();
+					jQuery("#mo_custom_login_icon_preview_facebook").hide();
+					jQuery("#mo_login_button_preview_facebook").hide();
+					jQuery("#mo_custom_login_button_preview_facebook").hide();
+				}
+				
+				if (document.getElementById('linkedin_enable').checked) {
+					flag = 1;
+					if(document.getElementById('mo_openid_login_default_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_icon_preview_linkedin").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_icon_preview_linkedin").show();
+					if(document.getElementById('mo_openid_login_default_radio').checked && document.getElementById('iconwithtext').checked)	
+						jQuery("#mo_login_button_preview_linkedin").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && document.getElementById('iconwithtext').checked)	
+						jQuery("#mo_custom_login_button_preview_linkedin").show();
+				} else if(!document.getElementById('linkedin_enable').checked){
+					jQuery("#mo_login_icon_preview_linkedin").hide();
+					jQuery("#mo_custom_login_icon_preview_linkedin").hide();
+					jQuery("#mo_login_button_preview_linkedin").hide();
+					jQuery("#mo_custom_login_button_preview_linkedin").hide();
+				}
+				
+				if (document.getElementById('instagram_enable').checked) {
+					flag = 1;
+					if(document.getElementById('mo_openid_login_default_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_icon_preview_instagram").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_icon_preview_instagram").show();
+					if(document.getElementById('mo_openid_login_default_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_button_preview_instagram").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_button_preview_instagram").show();
+				} else if(!document.getElementById('instagram_enable').checked){
+					jQuery("#mo_login_icon_preview_instagram").hide();
+					jQuery("#mo_custom_login_icon_preview_instagram").hide();
+					jQuery("#mo_login_button_preview_instagram").hide();
+					jQuery("#mo_custom_login_button_preview_instagram").hide();
+				}
+				
+				if (document.getElementById('amazon_enable').checked) {
+					flag = 1;
+					if(document.getElementById('mo_openid_login_default_radio').checked && !document.getElementById('iconwithtext').checkedd)
+						jQuery("#mo_login_icon_preview_amazon").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#amazoncustom").show();
+					if(document.getElementById('mo_openid_login_default_radio').checked && document.getElementById('iconwithtext').checked) {
+						jQuery("#mo_login_button_preview_amazon").show();
+						jQuery("#mo_login_icon_preview_amazon").hide();
+					}
+					if(document.getElementById('mo_openid_login_custom_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_button_preview_amazon").show();
+				}else if(!document.getElementById('amazon_enable').checked){
+					jQuery("#mo_login_icon_preview_amazon").hide();
+					jQuery("#amazoncustom").hide();
+					jQuery("#mo_login_button_preview_amazon").hide();
+					jQuery("#mo_custom_login_button_preview_amazon").hide();
+				}
+				
+				if (document.getElementById('salesforce_enable').checked) {
+					flag = 1;
+					if(document.getElementById('mo_openid_login_default_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_icon_preview_salesforce").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#salesforcecustom").show();
+					if(document.getElementById('mo_openid_login_default_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_button_preview_salesforce").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_button_preview_salesforce").show();
+				} else if(!document.getElementById('salesforce_enable').checked){
+					jQuery("#mo_login_icon_preview_salesforce").hide();
+					jQuery("#salesforcecustom").hide();
+					jQuery("#mo_login_button_preview_salesforce").hide();
+					jQuery("#mo_custom_login_button_preview_salesforce").hide();
+				}
+				
+				if (document.getElementById('windowslive_enable').checked) {
+					flag = 1;
+					if(document.getElementById('mo_openid_login_default_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_icon_preview_windowslive").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_icon_preview_windows").show();
+					if(document.getElementById('mo_openid_login_default_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_button_preview_windowslive").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_button_preview_windows").show();
+				} else if(!document.getElementById('windowslive_enable').checked){
+					jQuery("#mo_login_icon_preview_windowslive").hide();
+					jQuery("#mo_custom_login_icon_preview_windows").hide();
+					jQuery("#mo_login_button_preview_windowslive").hide();
+					jQuery("#mo_custom_login_button_preview_windows").hide();
+				}
+				
+				
+				if (document.getElementById('twitter_enable').checked) {
+					flag = 1;
+					if(document.getElementById('mo_openid_login_default_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_icon_preview_twitter").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && !document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_icon_preview_twitter").show();
+					if(document.getElementById('mo_openid_login_default_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_login_button_preview_twitter").show();
+					if(document.getElementById('mo_openid_login_custom_radio').checked && document.getElementById('iconwithtext').checked)
+						jQuery("#mo_custom_login_button_preview_twitter").show();
+				}else if(!document.getElementById('twitter_enable').checked){
+					jQuery("#mo_login_icon_preview_twitter").hide();
+					jQuery("#mo_custom_login_icon_preview_twitter").hide();
+					jQuery("#mo_login_button_preview_twitter").hide();
+					jQuery("#mo_custom_login_button_preview_twitter").hide();
+				}
+				
+				if(flag) {
+					jQuery("#no_apps_text").hide();
+				} else {
+					jQuery("#no_apps_text").show();
+				}
+			}
+		</script>
+		
+		
+		<script>
+			
+			var selectedApps = [];
+			function setTheme(){return jQuery('input[name=mo_openid_share_theme]:checked', '#settings_form').val();}
+			function setCustomTheme(){return jQuery('input[name=mo_openid_share_custom_theme]:checked', '#settings_form').val();}
+					
+			function moSharingPreview(e,t,r,w,h,n,x){
+				
+				//alert(e+" "+t+" "+r+" "+w+" "+h+" "+n+" "+x);
+				if("default"==w){
+					var a="mo_sharing_icon_preview";
+					jQuery('.mo_sharing_icon_preview').show();
+					jQuery('.mo_custom_sharing_icon_preview').hide();
+					jQuery('.mo_custom_sharing_icon_font_preview').hide();
+					jQuery("."+a).css({height:t,width:t});
+					jQuery("."+a).css("font-size",(t-10)+"px");
+					jQuery("."+a).css("margin-left",n+"px");
+					
+					if(r=="circle"){
+					jQuery("."+a).css("borderRadius","999px");
+					}else if(r=="oval"){
+					jQuery("."+a).css("borderRadius","5px");
+					}else if(r=="square"){
+					jQuery("."+a).css("borderRadius","0px");
+					}
+					
+				}
+				else if(w == "custom"){
+					var a="mo_custom_sharing_icon_preview";
+					jQuery('.mo_sharing_icon_preview').hide();
+					jQuery('.mo_custom_sharing_icon_font_preview').hide();
+					jQuery('.mo_custom_sharing_icon_preview').show();
+					jQuery("."+a).css("background",h);
+					jQuery("."+a).css("padding-top","8px");
+					jQuery("."+a).css({height:t-8,width:t});
+					jQuery("."+a).css("font-size",(t-16)+"px");
+					if(t-16<8)
+						jQuery("."+a).css("font-size","8px");
+					
+					
+					if(r=="circle"){
+					jQuery("."+a).css("borderRadius","999px");
+					}else if(r=="oval"){
+					jQuery("."+a).css("borderRadius","5px");
+					}else if(r=="square"){
+					jQuery("."+a).css("borderRadius","0px");
+					}
+					
+					jQuery("."+a).css("margin-left",n+"px");
+				}
+				
+				else if("customFont"==w){
+					var a="mo_custom_sharing_icon_font_preview";
+					jQuery('.mo_sharing_icon_preview').hide();
+					jQuery('.mo_custom_sharing_icon_preview').hide();
+					jQuery('.mo_custom_sharing_icon_font_preview').show();
+					jQuery("."+a).css("font-size",t+"px");
+					jQuery('.mo_custom_sharing_icon_font_preview').css("color",x);
+					jQuery("."+a).css("margin-left",n+"px");
+					
+					if(r=="circle"){
+					jQuery("."+a).css("borderRadius","999px");
+					
+					}else if(r=="oval"){
+					jQuery("."+a).css("borderRadius","5px");
+					}else if(r=="square"){
+					jQuery("."+a).css("borderRadius","0px");
+					}
+					
+				}
+				addSelectedApps();
+				
+			}
+			function addSelectedApps() {
+				var flag = 0;
+					if (document.getElementById('google_share_enable').checked)   {
+						flag = 1;
+							if(document.getElementById('mo_openid_default_background_radio').checked)
+								jQuery("#mo_sharing_icon_preview_google").show();
+							if(document.getElementById('mo_openid_custom_background_radio').checked)
+								jQuery("#mo_custom_sharing_icon_preview_google").show();
+							if(document.getElementById('mo_openid_no_background_radio').checked)
+								jQuery("#mo_custom_sharing_icon_font_preview_google").show();
+					} else if(!document.getElementById('google_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_google").hide();
+						jQuery("#mo_custom_sharing_icon_preview_google").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_google").hide();
+						
+					}
+					
+					if (document.getElementById('facebook_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_facebook").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_facebook").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_facebook").show();
+					}else if(!document.getElementById('facebook_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_facebook").hide();
+						jQuery("#mo_custom_sharing_icon_preview_facebook").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_facebook").hide();
+					}
+					
+					if (document.getElementById('linkedin_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_linkedin").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_linkedin").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)	
+							jQuery("#mo_custom_sharing_icon_font_preview_linkedin").show();
+					} else if(!document.getElementById('linkedin_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_linkedin").hide();
+						jQuery("#mo_custom_sharing_icon_preview_linkedin").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_linkedin").hide();
+					}
+					
+					if (document.getElementById('twitter_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_twitter").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_twitter").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_twitter").show();
+					} else if(!document.getElementById('twitter_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_twitter").hide();
+						jQuery("#mo_custom_sharing_icon_preview_twitter").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_twitter").hide();
+					}
+					
+					if (document.getElementById('pinterest_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_pinterest").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_pinterest").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_pinterest").show();
+					}else if(!document.getElementById('pinterest_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_pinterest").hide();
+						jQuery("#mo_custom_sharing_icon_preview_pinterest").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_pinterest").hide();
+					}
+					
+					if (document.getElementById('reddit_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_reddit").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_reddit").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_reddit").show();
+						//}
+					} else if(!document.getElementById('reddit_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_reddit").hide();
+						jQuery("#mo_custom_sharing_icon_preview_reddit").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_reddit").hide();
+					}
+					
+					if (document.getElementById('vkontakte_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_vk").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_vk").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_vk").show();
+						//}
+					} else if(!document.getElementById('vkontakte_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_vk").hide();
+						jQuery("#mo_custom_sharing_icon_preview_vk").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_vk").hide();
+					}
+					
+					if (document.getElementById('stumble_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_stumble").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_stumble").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_stumble").show();
+						//}
+					} else if(!document.getElementById('stumble_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_stumble").hide();
+						jQuery("#mo_custom_sharing_icon_preview_stumble").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_stumble").hide();
+					}
+					
+					if (document.getElementById('tumblr_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_tumblr").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_tumblr").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_tumblr").show();
+						//}
+					} else if(!document.getElementById('tumblr_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_tumblr").hide();
+						jQuery("#mo_custom_sharing_icon_preview_tumblr").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_tumblr").hide();
+					}
+					
+					if (document.getElementById('pocket_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_pocket").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_pocket").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_pocket").show();
+						//}
+					} else if(!document.getElementById('pocket_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_pocket").hide();
+						jQuery("#mo_custom_sharing_icon_preview_pocket").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_pocket").hide();
+					}
+					if (document.getElementById('digg_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_digg").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_digg").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_digg").show();
+						//}
+					} else if(!document.getElementById('digg_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_digg").hide();
+						jQuery("#mo_custom_sharing_icon_preview_digg").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_digg").hide();
+					}
+					if (document.getElementById('delicious_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_delicious").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_delicious").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_delicious").show();
+						//}
+					} else if(!document.getElementById('delicious_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_delicious").hide();
+						jQuery("#mo_custom_sharing_icon_preview_delicious").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_delicious").hide();
+					}
+					if (document.getElementById('odnoklassniki_share_enable').checked) {
+						flag = 1;
+						if(document.getElementById('mo_openid_default_background_radio').checked)
+							jQuery("#mo_sharing_icon_preview_odnoklassniki").show();
+						if(document.getElementById('mo_openid_custom_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_preview_odnoklassniki").show();
+						if(document.getElementById('mo_openid_no_background_radio').checked)
+							jQuery("#mo_custom_sharing_icon_font_preview_odnoklassniki").show();
+						//}
+					} else if(!document.getElementById('odnoklassniki_share_enable').checked){
+						jQuery("#mo_sharing_icon_preview_odnoklassniki").hide();
+						jQuery("#mo_custom_sharing_icon_preview_odnoklassniki").hide();
+						jQuery("#mo_custom_sharing_icon_font_preview_odnoklassniki").hide();
+					}
+					
+						if(flag) {
+						jQuery("#no_apps_text").hide();
+					} else {
+						jQuery("#no_apps_text").show();
+					} 
+			}
+						
+				jQuery( document ).ready(function() {
+					//addSelectedApps();	
+					var shareIconSize = '<?php echo $shareIconSize ?>';
+					var shareIconTheme = '<?php echo $shareIconTheme ?>';
+					var shareIconCustomTheme = '<?php echo $shareIconCustomTheme ?>';
+					var shareIconCustomColor = '<?php echo $shareIconCustomColor ?>';
+					var shareIconCustomFont = '<?php echo $shareIconCustomFont ?>';
+					var shareIconSpace = '<?php echo $shareIconSpace ?>';
+					moSharingPreview('horizontal',shareIconSize,shareIconTheme,shareIconCustomTheme,shareIconCustomColor,shareIconSpace,shareIconCustomFont);	//alert("sharing");
+				});
+				
+				
+			function moLoginSizeValidate(e){
+				var t=parseInt(e.value.trim());t>60?e.value=60:20>t&&(e.value=20);
+				reloadLoginPreview();
+			}
+			function moLoginSpaceValidate(e){
+				var t=parseInt(e.value.trim());t>60?e.value=60:0>t&&(e.value=0);
+				reloadLoginPreview();
+			}
+			function moLoginWidthValidate(e){
+				var t=parseInt(e.value.trim());t>1000?e.value=1000:140>t&&(e.value=140)
+				reloadLoginPreview();
+			}
+			function moLoginHeightValidate(e){
+				var t=parseInt(e.value.trim());t>100?e.value=100:10>t&&(e.value=10)
+				reloadLoginPreview();
+			}
+			function reloadLoginPreview(){
+				if(setLoginTheme()=='longbutton')
+					moLoginPreview(document.getElementById('mo_login_icon_width').value ,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value,
+					document.getElementById('mo_login_icon_height').value);
+				else
+					moLoginPreview(document.getElementById('mo_login_icon_size').value ,setLoginTheme(),setLoginCustomTheme(),document.getElementById('mo_login_icon_custom_color').value,document.getElementById('mo_login_icon_space').value);
+			}
+			
+			
+			function moSharingSpaceValidate(e){
+				var t=parseInt(e.value.trim());t>50?e.value=50:0>t&&(e.value=0);
+				reloadSharingPreview();
+			}
+
+			function moSharingSizeValidate(e){
+				var t=parseInt(e.value.trim());t>60?e.value=60:10>t&&(e.value=10);
+				reloadSharingPreview();
+			}
+			function reloadSharingPreview(){
+				moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(), setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value, document.getElementById('mo_sharing_icon_custom_font').value);
+			}
+			
+		</script>
+	</body>
+	</html>

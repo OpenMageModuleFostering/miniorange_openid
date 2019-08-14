@@ -1,0 +1,9 @@
+<?xml version = "1.0"?>
+<config>
+  <modules>
+	<MiniOrange_Openid>
+		<active>true</active>
+		<codePool>community</codePool>
+	 </MiniOrange_Openid>
+   </modules>
+</config>

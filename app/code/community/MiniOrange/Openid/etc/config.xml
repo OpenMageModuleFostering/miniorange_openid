@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MiniOrange_Openid>
+            <version>1.0.0</version>    <!-- Version number of your module -->
+        </MiniOrange_Openid>
+    </modules>
+    <frontend>
+        <routers>
+            <MiniOrange_Openid_customer>
+                <use>standard</use>
+                <args>
+                    <module>MiniOrange_Openid_Customer</module>
+                    <frontName>sociallogin</frontName>
+                </args>
+            </MiniOrange_Openid_customer>
+        </routers>
+		<layout>
+		   <updates>
+				<miniOrange_openid_layout>
+					 <file>MiniOrange_Openid_layout.xml</file>
+				 </miniOrange_openid_layout>
+			</updates>
+		</layout>
+    </frontend>
+	
+	
+	<admin>
+        <routers>
+            <MiniOrange_Openid>
+                <use>admin</use>
+                <args>
+                    <module>MiniOrange_Openid</module>
+                    <frontName>openid</frontName>
+                </args>
+            </MiniOrange_Openid>
+        </routers>
+    </admin>
+	
+	<adminhtml>
+	   <layout>
+		  <updates>
+			  <miniorange_openid_admin_layout>
+				  <file>miniorange_openid.xml</file>
+			   </miniorange_openid_admin_layout>
+		  </updates>
+	   </layout>
+	   
+	   <menu>
+	    <miniOrangeOpenId translate="title" module="MiniOrange_Openid">
+            <title>miniOrange</title>
+            <sort_order>81</sort_order>
+            <children>
+                <configure_extension translate="title" module="MiniOrange_Openid">
+					   <title>Social Login and Sharing</title>
+					   <sort_order>1</sort_order>
+					   <action>openid/adminhtml_index</action>
+				</configure_extension>
+            </children>
+        </miniOrangeOpenId>
+		</menu>	
+	 </adminhtml>
+	
+	
+	 <global>
+		<!-- Definition of our blocks -->
+        <blocks>
+            <MiniOrange_Openid>  
+                <class>MiniOrange_Openid_Block</class>
+            </MiniOrange_Openid>
+        </blocks>
+		<!-- Declaration for the helper class-->
+		<helpers>
+			<MiniOrange_Openid>
+				<class>MiniOrange_Openid_Helper</class>
+			</MiniOrange_Openid>
+		</helpers> 
+
+			
+		<!-- Defining our resources -->
+		 <resources>
+            <MiniOrange_Openid_setup>
+                <setup>
+                    <module>MiniOrange_Openid</module>
+                </setup>
+            </MiniOrange_Openid_setup>
+        </resources>
+		
+		
+	</global>
+   
+</config>

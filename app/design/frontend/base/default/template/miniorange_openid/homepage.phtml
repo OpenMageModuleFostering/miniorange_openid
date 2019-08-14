@@ -1,0 +1,134 @@
+<?php $this->mo_openid_login_validate_for_customer(); ?>
+<style>
+.mo_login_icon_preview{
+	width:35px;
+	cursor:pointer;
+	display:inline;
+}
+</style>
+<link  href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'adminhtml/default/default/MiniOrange_Openid/css/bootstrap-social.css'; ?>" rel="stylesheet">
+<link  href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'adminhtml/default/default/MiniOrange_Openid/css/font-awesome.min.css'; ?>" rel="stylesheet">
+
+<div class="block-title">
+        <strong><span>Social Login</span></strong>
+</div>
+<div id="messages">
+		<ul class="mini-messages">
+		<?php if(Mage::getSingleton('core/session')->getErrorMessage()){?>
+		<li class="error-msg"><ul><li><span><?php echo Mage::getSingleton('core/session')->getErrorMessage(); ?></span><a id="error-cancel" href="#">&times;</a></li></ul></li>
+		<?php }?>
+		<?php if(Mage::getSingleton('core/session')->getSuccessMessage()){?>
+		<li class="success-msg"><ul><li><span><?php echo Mage::getSingleton('core/session')->getSuccessMessage(); ?></span><a id="success-cancel" href="#">&times;</a></li></ul></li>
+		<?php }?>
+		</ul>						
+</div>
+
+<?php
+
+	$iconSpace = $this->getConfigForAdmin('iconSpace');
+	if(!$iconSpace) $iconSpace = '4'; 
+	$iconCustomSize = $this->getConfigForAdmin('iconCustomSize');
+	if(!$iconCustomSize) $iconCustomSize = '35'; 
+	$iconCustomWidth = $this->getConfigForAdmin('iconCustomWidth');
+	if(!$iconCustomWidth) $iconCustomWidth = '200'; 
+	$iconCustomHeight = $this->getConfigForAdmin('iconCustomHeight');
+	if(!$iconCustomHeight) $iconCustomHeight = '35'; 
+	$loginCustomTheme = $this->getConfigForAdmin('loginCustomTheme');
+	$loginTheme = $this->getConfigForAdmin('loginTheme');
+	$iconCustomColor = $this->getConfigForAdmin('iconCustomColor');
+	if(!$iconCustomColor) $iconCustomColor = '#0000FF'; 
+	
+	$googleEnable = $this->getConfigForAdmin('googleEnable');
+	$facebookEnable = $this->getConfigForAdmin('facebookEnable');
+	$twitterEnable = $this->getConfigForAdmin('twitterEnable');
+	$instagramEnable = $this->getConfigForAdmin('instagramEnable');
+	$linkedinEnable = $this->getConfigForAdmin('linkedinEnable');
+	$amazonEnable = $this->getConfigForAdmin('amazonEnable');
+	$salesforceEnable = $this->getConfigForAdmin('salesforceEnable');
+	$windowsliveEnable = $this->getConfigForAdmin('windowsliveEnable');
+			
+?>
+
+			 
+<?php 
+
+	if(Mage::getSingleton('customer/session')->isLoggedIn()){
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+		echo 'Welcome '.$customer->getFirstname().'!<br><br>'; 
+	}else if($loginTheme=='longbutton') { 
+	
+	$paddingLong = 0;
+	if($iconCustomHeight>26)
+		$paddingLong = ($iconCustomHeight-26)/2;
+	if($loginCustomTheme=='custom') { ?>
+
+	<div><center>
+		<?php if($googleEnable){ ?><a id="mo_custom_login_button_preview_google" class="btn btn-block btn-customtheme btn-social   btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: <?php echo $paddingLong;?>px;padding-bottom: <?php echo $paddingLong;?>px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>" onclick="socialLogin('google')" > <i class="fa fa-google-plus"></i>Login with Google</a>
+		<?php } if($facebookEnable){ ?><a id="mo_custom_login_button_preview_facebook" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: <?php echo $paddingLong;?>px;padding-bottom: <?php echo $paddingLong;?>px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;"  onclick="socialLogin('facebook')" > <i class="fa fa-facebook"></i>Login with Facebook</a>
+		<?php } if($twitterEnable){ ?><a id="mo_custom_login_button_preview_twitter" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: <?php echo $paddingLong;?>px;padding-bottom: <?php echo $paddingLong;?>px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;"  onclick="socialLogin('twitter')" > <i class="fa fa-twitter"></i>Login with Twitter</a>
+		<?php } if($instagramEnable){ ?><a id="mo_custom_login_button_preview_instagram" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: <?php echo $paddingLong;?>px;padding-bottom: <?php echo $paddingLong;?>px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;"  onclick="socialLogin('instagram')" > <i class="fa fa-instagram"></i>Login with Instagram</a>
+		<?php } if($linkedinEnable){ ?><a id="mo_custom_login_button_preview_linkedin" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: <?php echo $paddingLong;?>px;padding-bottom: <?php echo $paddingLong;?>px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;"  onclick="socialLogin('linkedin')" > <i class="fa fa-linkedin"></i>Login with LinkedIn</a>
+		<?php } if($amazonEnable){ ?><a id="mo_custom_login_button_preview_amazon" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: <?php echo $paddingLong;?>px;padding-bottom: <?php echo $paddingLong;?>px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;"  onclick="socialLogin('amazon')" > <i class="fa fa-amazon"></i>Login with Amazon</a>
+		<?php } if($salesforceEnable){ ?><a id="mo_custom_login_button_preview_salesforce" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: <?php echo $paddingLong;?>px;padding-bottom: <?php echo $paddingLong;?>px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;"  onclick="socialLogin('salesforce')" > <i class="fa fa-cloud"></i>Login with Salesforce</a>
+		<?php } if($windowsliveEnable){ ?><a id="mo_custom_login_button_preview_windows" class="btn btn-block btn-customtheme btn-social  btn-custom-size" style="width:<?php echo $iconCustomWidth;?>px;height:<?php echo $iconCustomHeight;?>px;padding-top: <?php echo $paddingLong;?>px;padding-bottom: <?php echo $paddingLong;?>px;margin-bottom:<?php echo $iconSpace;?>px;background:<?php echo $iconCustomColor;?>;"  onclick="socialLogin('windowslive')" > <i class="fa fa-windows"></i>Login with Windows</a><?php } ?></center>
+	</div>
+
+	<?php } else { ?> 
+		<div><center>
+		<?php if($googleEnable){ ?><a id="mo_login_button_preview_google" class="btn btn-block btn-defaulttheme btn-social btn-google btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: <?php echo $paddingLong;?>px; padding-bottom: <?php echo $paddingLong;?>px; margin-bottom: <?php echo $iconSpace.'px'; ?>"  onclick="socialLogin('google')" > <i class="fa fa-google-plus" style="padding-top: 0px;"></i>Login with Google</a>
+		<?php } if($facebookEnable){ ?><a id="mo_login_button_preview_facebook" class="btn btn-block btn-defaulttheme btn-social btn-facebook btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: <?php echo $paddingLong;?>px; padding-bottom: <?php echo $paddingLong;?>px; margin-bottom: <?php echo $iconSpace.'px'; ?>"  onclick="socialLogin('facebook')" > <i class="fa fa-facebook" style="padding-top: 0px;"></i>Login with Facebook</a>
+		<?php } if($twitterEnable){ ?><a id="mo_login_button_preview_twitter" class="btn btn-block btn-defaulttheme btn-social btn-twitter btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: <?php echo $paddingLong;?>px; padding-bottom: <?php echo $paddingLong;?>px; margin-bottom: <?php echo $iconSpace.'px'; ?> "  onclick="socialLogin('twitter')" > <i class="fa fa-twitter" style="padding-top: 0px;"></i>Login with Twitter</a>
+		<?php } if($instagramEnable){ ?><a id="mo_login_button_preview_instagram" class="btn btn-block btn-defaulttheme btn-social btn-instagram btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: <?php echo $paddingLong;?>px; padding-bottom: <?php echo $paddingLong;?>px; margin-bottom: <?php echo $iconSpace.'px'; ?>"  onclick="socialLogin('instagram')" > <i class="fa fa-instagram" style="padding-top: 0px;"></i>Login with Instagram</a>
+		<?php } if($linkedinEnable){ ?><a id="mo_login_button_preview_linkedin" class="btn btn-block btn-defaulttheme btn-social btn-linkedin btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: <?php echo $paddingLong;?>px; padding-bottom: <?php echo $paddingLong;?>px; margin-bottom: <?php echo $iconSpace.'px'; ?>"  onclick="socialLogin('linkedin')" > <i class="fa fa-linkedin" style="padding-top: 0px;"></i>Login with LinkedIn</a>
+		<?php } if($amazonEnable){ ?><a id="mo_login_button_preview_amazon" class="btn btn-block btn-defaulttheme btn-social btn-soundcloud btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: <?php echo $paddingLong;?>px; padding-bottom: <?php echo $paddingLong;?>px; margin-bottom: <?php echo $iconSpace.'px'; ?>"  onclick="socialLogin('amazon')" > <i class="fa fa-amazon" style="padding-top: 0px;"></i>Login with Amazon</a>
+		<?php } if($salesforceEnable){ ?><a id="mo_login_button_preview_salesforce" class="btn btn-block btn-defaulttheme btn-social btn-vimeo btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: <?php echo $paddingLong;?>px; padding-bottom: <?php echo $paddingLong;?>px; margin-bottom: <?php echo $iconSpace.'px'; ?>"  onclick="socialLogin('salesforce')" > <i class="fa fa-cloud" style="padding-top: 0px;"></i>Login with Salesforce</a>
+		<?php } if($windowsliveEnable){ ?><a id="mo_login_button_preview_windowslive" class="btn btn-block btn-defaulttheme btn-social btn-microsoft btn-custom-size" style="width: <?php echo $iconCustomWidth;?>px; height:<?php echo $iconCustomHeight;?>px; padding-top: <?php echo $paddingLong;?>px; padding-bottom: <?php echo $paddingLong;?>px; margin-bottom:<?php echo $iconSpace.'px'; ?> "  onclick="socialLogin('windowslive')" > <i class="fa fa-windows" style="padding-top: 0px;"></i>Login with Windows</a><?php } ?>
+		</center></div>
+	<?php } ?>
+	
+<?php } else {
+	?>
+	<style>.mo_custom_login_icon_preview{cursor:pointer;}</style>
+	<?php
+	if($loginTheme=='circle'){ ?>
+		<style> .mo_login_icon_preview, .mo_custom_login_icon_preview{border-radius: 999px !important;}</style>
+	<?php } else if($loginTheme=='oval'){ ?>
+		<style> .mo_login_icon_preview, .mo_custom_login_icon_preview{border-radius: 5px !important;}</style>
+	<?php }
+	
+	if($loginCustomTheme=='custom') { ?>
+		<div>
+		<?php if($googleEnable){ ?><i class="mo_custom_login_icon_preview fa fa-google-plus" id="mo_custom_login_icon_preview_google"  style="color: rgb(255, 255, 255); text-align: center; margin-top: 5px; height: <?php echo $iconCustomSize;?>px; width: <?php echo $iconCustomSize;?>px; padding-top: 8px; margin-left: <?php echo $iconSpace.'px'; ?>; font-size: <?php echo $iconCustomSize-16;?>px; background: <?php echo $iconCustomColor;?>;"  onclick="socialLogin('google')" ></i>
+		<?php } if($facebookEnable){ ?><i class="mo_custom_login_icon_preview fa fa-facebook" id="mo_custom_login_icon_preview_facebook"  style="color: rgb(255, 255, 255); text-align: center; margin-top: 5px; height: <?php echo $iconCustomSize;?>px; width: <?php echo $iconCustomSize;?>px; padding-top: 8px; margin-left: <?php echo $iconSpace.'px'; ?>; font-size: <?php echo $iconCustomSize-16;?>px; background: <?php echo $iconCustomColor;?>;" onclick="socialLogin('facebook')" ></i>
+		<?php } if($twitterEnable){ ?><i class="mo_custom_login_icon_preview fa fa-twitter" id="mo_custom_login_icon_preview_twitter" style="color: rgb(255, 255, 255); text-align: center; margin-top: 5px; height: <?php echo $iconCustomSize;?>px; width: <?php echo $iconCustomSize;?>px; padding-top: 8px; margin-left: <?php echo $iconSpace.'px'; ?>; font-size: <?php echo $iconCustomSize-16;?>px; background: <?php echo $iconCustomColor;?>;" onclick="socialLogin('twitter')" ></i>
+		<?php } if($instagramEnable){ ?><i class="mo_custom_login_icon_preview fa fa-instagram" id="mo_custom_login_icon_preview_instagram" style="color: rgb(255, 255, 255); text-align: center; margin-top: 5px; height: <?php echo $iconCustomSize;?>px; width: <?php echo $iconCustomSize;?>px; padding-top: 8px; margin-left: <?php echo $iconSpace.'px'; ?>; font-size: <?php echo $iconCustomSize-16;?>px; background: <?php echo $iconCustomColor;?>;" onclick="socialLogin('instagram')" ></i>
+		<?php } if($linkedinEnable){ ?><i class="mo_custom_login_icon_preview fa fa-linkedin" id="mo_custom_login_icon_preview_linkedin" style="color: rgb(255, 255, 255); text-align: center; margin-top: 5px; height: <?php echo $iconCustomSize;?>px; width: <?php echo $iconCustomSize;?>px; padding-top: 8px; margin-left: <?php echo $iconSpace.'px'; ?>; font-size: <?php echo $iconCustomSize-16;?>px; background: <?php echo $iconCustomColor;?>;" onclick="socialLogin('linkedin')" ></i>
+		<?php } if($amazonEnable){ ?><i class="mo_custom_login_icon_preview fa fa-amazon" id="amazoncustom" style="color: rgb(255, 255, 255); text-align: center; margin-top: 5px; height: <?php echo $iconCustomSize;?>px; width: <?php echo $iconCustomSize;?>px; padding-top: 8px; margin-left: <?php echo $iconSpace.'px'; ?>; font-size: <?php echo $iconCustomSize-16;?>px; background: <?php echo $iconCustomColor;?>;" onclick="socialLogin('amazon')" ></i>
+		<?php } if($salesforceEnable){ ?><i class="mo_custom_login_icon_preview fa fa-cloud" id="salesforcecustom" style="color: rgb(255, 255, 255); text-align: center; margin-top: 5px; height: <?php echo $iconCustomSize;?>px; width: <?php echo $iconCustomSize;?>px; padding-top: 8px; margin-left: <?php echo $iconSpace.'px'; ?>; font-size: <?php echo $iconCustomSize-16;?>px; background: <?php echo $iconCustomColor;?>;" onclick="socialLogin('salesforce')"  ></i>
+		<?php } if($windowsliveEnable){ ?><i class="mo_custom_login_icon_preview fa fa-windows" id="mo_custom_login_icon_preview_windows" style="color: rgb(255, 255, 255); text-align: center; margin-top: 5px; height: <?php echo $iconCustomSize;?>px; width: <?php echo $iconCustomSize;?>px; padding-top: 8px; margin-left: <?php echo $iconSpace.'px'; ?>; font-size: <?php echo $iconCustomSize-16;?>px; background: <?php echo $iconCustomColor;?>;" onclick="socialLogin('windowslive')" ></i><?php }  ?>
+		</div>
+	<?php } else { ?> 
+	<div >
+		<img class="mo_login_icon_preview" id="mo_login_icon_preview_google" src="<?php echo $this->getIconImage('google') ?>" 
+			style="margin-left: <?php echo $iconSpace.'px'; ?>; height:<?php echo $iconCustomSize;?>px; width:<?php echo $iconCustomSize;?>px;" onclick="socialLogin('google')"  />
+		<img class="mo_login_icon_preview" id="mo_login_icon_preview_facebook" src="<?php echo $this->getIconImage('facebook') ?>" style="margin-left: <?php echo $iconSpace.'px'; ?>; height:<?php echo $iconCustomSize;?>px; width:<?php echo $iconCustomSize;?>px;" onclick="socialLogin('facebook')"  />
+		<img class="mo_login_icon_preview" id="mo_login_icon_preview_twitter" src="<?php echo $this->getIconImage('twitter') ?>" style="margin-left: <?php echo $iconSpace.'px'; ?>; height:<?php echo $iconCustomSize;?>px; width:<?php echo $iconCustomSize;?>px;" onclick="socialLogin('twitter')" />
+		<img class="mo_login_icon_preview" id="mo_login_icon_preview_instagram" src="<?php echo $this->getIconImage('instagram') ?>" style="margin-left: <?php echo $iconSpace.'px'; ?>; height:<?php echo $iconCustomSize;?>px; width:<?php echo $iconCustomSize;?>px;" onclick="socialLogin('instagram')"  />
+		<img class="mo_login_icon_preview" id="mo_login_icon_preview_linkedin" src="<?php echo $this->getIconImage('linkedin') ?>" style="margin-left: <?php echo $iconSpace.'px'; ?>; height:<?php echo $iconCustomSize;?>px; width:<?php echo $iconCustomSize;?>px;" onclick="socialLogin('linkedin')"  />
+		<img class="mo_login_icon_preview" id="mo_login_icon_preview_amazon" src="<?php echo $this->getIconImage('amazon') ?>" style="margin-left: <?php echo $iconSpace.'px'; ?>; height:<?php echo $iconCustomSize;?>px; width:<?php echo $iconCustomSize;?>px;" onclick="socialLogin('amazon')" />
+		<img class="mo_login_icon_preview" id="mo_login_icon_preview_salesforce" src="<?php echo $this->getIconImage('salesforce') ?>" style="margin-left: <?php echo $iconSpace.'px'; ?>; height:<?php echo $iconCustomSize;?>px; width:<?php echo $iconCustomSize;?>px;"  onclick="socialLogin('salesforce')" />
+		<img class="mo_login_icon_preview" id="mo_login_icon_preview_windowslive" src="<?php echo $this->getIconImage('windowslive') ?>" style="margin-left: <?php echo $iconSpace.'px'; ?>; height:<?php echo $iconCustomSize;?>px; width:<?php echo $iconCustomSize;?>px;" onclick="socialLogin('windowslive')"  />
+	</div>
+	<?php } 	
+} ?> 	
+
+
+<br>
+				
+				
+<script>
+var baseUrl = '<?php echo $this->getOpenIdAdminUrl(); ?>';
+function socialLogin(appName){
+	window.location.href = baseUrl + '?option=customerSocialLogin&app_name='+appName;
+}
+</script>

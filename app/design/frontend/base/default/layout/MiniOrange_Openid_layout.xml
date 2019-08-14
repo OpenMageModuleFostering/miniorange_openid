@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+		<reference name="right">
+            <block type="MiniOrange_Openid/moOpenidConfig" before="-" name="openid_login_home" template="miniorange_openid/homepage.phtml" />
+        </reference>
+	</default>
+    
+    <customer_account_login>
+        <reference name="content">
+            <block type="MiniOrange_Openid/moOpenidConfig" before="-" name="openid_login_home" template="miniorange_openid/homepage.phtml" />
+        </reference>
+    </customer_account_login>
+    <customer_account_create>
+        <reference name="content">
+            <block type="MiniOrange_Openid/moOpenidConfig" before="-" name="openid_login_home" template="miniorange_openid/homepage.phtml" />
+        </reference>
+	</customer_account_create>
+	
+	<catalog_product_view>
+        <reference name="product.info.addtocart">
+            <block type="MiniOrange_Openid/moOpenidConfig" after="-" name="shareproduct" template="miniorange_openid/shareproduct.phtml" />
+        </reference>
+    </catalog_product_view>
+	
+</layout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<layout>
+
+  <miniorange_openid_adminhtml_index_index>
+     <reference name="content">
+        <block type="MiniOrange_Openid/moOpenidConfig" name="test" template="miniorange_openid/moOpenidConfig.phtml" />
+      </reference>
+   </miniorange_openid_adminhtml_index_index>
+   
+   <adminhtml_index_login>
+		<reference name="form.additional.info">
+          <block type="MiniOrange_Openid/moOpenidConfig"  name="test"
+                  template="miniorange_openid/login.phtml" /> 
+      </reference>
+    </adminhtml_index_login>
+
+</layout>

@@ -1,0 +1,171 @@
+<link  href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'adminhtml/default/default/MiniOrange_Openid/css/bootstrap-social.css'; ?>" rel="stylesheet">
+<link  href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'adminhtml/default/default/MiniOrange_Openid/css/font-awesome.min.css'; ?>" rel="stylesheet">
+<style>
+.mo_sharing_icon_preview {
+   display: inline-block;
+   cursor:pointer;
+}
+.mo_custom_sharing_icon_font_preview, .mo_custom_sharing_icon_preview { 
+	cursor:pointer;
+}
+</style>
+
+<br>
+
+<?php
+	$url = $http . $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'];
+	$title = "";
+	$excerpt = "";
+	$shareIconTheme = $this->getConfigForAdmin('shareIconTheme');
+	$shareIconCustomTheme = $this->getConfigForAdmin('shareIconCustomTheme');
+	$shareIconCustomColor = $this->getConfigForAdmin('shareIconCustomColor');
+	if(!$shareIconCustomColor) $shareIconCustomColor = '#0000FF'; 
+	$shareIconCustomFont = $this->getConfigForAdmin('shareIconCustomFont');
+	if(!$shareIconCustomFont) $shareIconCustomFont = '#0000FF'; 
+	$shareIconSpace = $this->getConfigForAdmin('shareIconSpace');
+	if(!$shareIconSpace) $shareIconSpace = '4'; 
+	$shareIconSize = $this->getConfigForAdmin('shareIconSize');
+	if(!$shareIconSize) $shareIconSize = '35'; 
+
+	$facebookShareEnable = $this->getConfigForAdmin('facebookShareEnable');
+	$twitterShareEnable = $this->getConfigForAdmin('twitterShareEnable');
+	$googleShareEnable = $this->getConfigForAdmin('googleShareEnable');
+	$vkontakteShareEnable = $this->getConfigForAdmin('vkontakteShareEnable');
+	$tumblrShareEnable = $this->getConfigForAdmin('tumblrShareEnable');
+	$stumbleShareEnable = $this->getConfigForAdmin('stumbleShareEnable');
+	$linkedinShareEnable = $this->getConfigForAdmin('linkedinShareEnable');
+	$redditShareEnable = $this->getConfigForAdmin('redditShareEnable');
+	$pinterestShareEnable = $this->getConfigForAdmin('pinterestShareEnable');
+	$pocketShareEnable = $this->getConfigForAdmin('pocketShareEnable');
+	$diggShareEnable = $this->getConfigForAdmin('diggShareEnable');
+	$deliciousShareEnable = $this->getConfigForAdmin('deliciousShareEnable');
+	$odnoklassnikiShareEnable = $this->getConfigForAdmin('odnoklassnikiShareEnable');
+	
+?>
+
+<?php $borderRadius = 0; 
+if($shareIconTheme=='circle')
+	$borderRadius = 999;
+else if($shareIconTheme=='oval')
+	$borderRadius = 5;
+?>
+<?php if($shareIconCustomTheme=='custom'){ ?>
+
+<div>
+<?php 
+$fontSize =  $shareIconSize - 16;
+if($fontSize<8)
+	$fontSize=8;
+$paddingTop = 8;
+if($shareIconSize<30)
+	$paddingTop = ($shareIconSize-8)/2;
+?>
+<?php if($facebookShareEnable){ 
+$link = 'https://www.facebook.com/dialog/share?app_id=766555246789034&amp;display=popup&amp;href='.$url.'&amp;redirect_uri=http%3A%2F%2Fminiorange.com%2Fsocial_share_redirect'; ?><i class="mo_custom_sharing_icon_preview fa fa-facebook" id="mo_custom_sharing_icon_preview_facebook"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"></i>
+<?php } if($twitterShareEnable){ 
+$link = 'https://twitter.com/intent/tweet?text='.$title.'&amp;url='.$url; ?><i class="mo_custom_sharing_icon_preview fa fa-twitter" id="mo_custom_sharing_icon_preview_twitter" style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>"  onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($googleShareEnable){ 
+$link = 'https://plus.google.com/share?url='.$url; ?><i class="mo_custom_sharing_icon_preview fa fa-google-plus" id="mo_custom_sharing_icon_preview_google"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($vkontakteShareEnable){ 
+$link = 'http://vk.com/share.php?url='.$url.'&amp;title='.$title.'&amp;description='.$excerpt;
+?><i class="mo_custom_sharing_icon_preview fa fa-vk" id="mo_custom_sharing_icon_preview_vk"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($tumblrShareEnable){ 
+$link = 'http://www.tumblr.com/share/link?url='.$url.'&amp;title='.$title.'&amp;description='.$excerpt; ?><i class="mo_custom_sharing_icon_preview fa fa-tumblr" id="mo_custom_sharing_icon_preview_tumblr"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($stumbleShareEnable){ 
+$link = 'http://www.stumbleupon.com/submit?url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_preview fa fa-stumbleupon" id="mo_custom_sharing_icon_preview_stumble"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($linkedinShareEnable){ 
+$link = 'https://www.linkedin.com/shareArticle?mini=true&amp;title='.$title.'&amp;url='.$url.'&amp;summary='.$excerpt; ?><i class="mo_custom_sharing_icon_preview fa fa-linkedin" id="mo_custom_sharing_icon_preview_linkedin" style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($redditShareEnable){ 
+$link = 'http://www.reddit.com/submit?url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_preview fa fa-reddit" id="mo_custom_sharing_icon_preview_reddit"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($pinterestShareEnable){ ?><i class="mo_custom_sharing_icon_preview fa fa-pinterest" id="mo_custom_sharing_icon_preview_pinterest"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="pinIt()" ></i>
+<?php } if($pocketShareEnable){ 
+$link = 'https://getpocket.com/save?url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_preview fa fa-get-pocket" id="mo_custom_sharing_icon_preview_pocket"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($diggShareEnable){ 
+$link = 'http://digg.com/submit?url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_preview fa fa-digg" id="mo_custom_sharing_icon_preview_digg"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($deliciousShareEnable){ 
+$link = 'http://www.delicious.com/save?v=5&noui&jump=close&url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_preview fa fa-delicious" id="mo_custom_sharing_icon_preview_delicious"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($odnoklassnikiShareEnable){ 
+$link = 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st.comments='.$excerpt.'&amp;st._surl='.$url; ?><i class="mo_custom_sharing_icon_preview fa fa-odnoklassniki" id="mo_custom_sharing_icon_preview_odnoklassniki"  style="color:#fff;text-align:center;margin-top:5px;display:inline-block;padding-top:<?php echo $paddingTop;?>px;height:<?php echo $shareIconSize;?>px;width:<?php echo $shareIconSize;?>px;font-size:<?php echo $fontSize;?>px;border-radius:<?php echo $borderRadius;?>px; margin-left:<?php echo $shareIconSpace;?>px;background:<?php echo $shareIconCustomColor;?>" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } ?>
+</div>
+
+<?php } else if($shareIconCustomTheme=='customFont'){ ?>
+
+<div>
+<?php if($facebookShareEnable){ 
+$link = 'https://www.facebook.com/dialog/share?app_id=766555246789034&amp;display=popup&amp;href='.$url.'&amp;redirect_uri=http%3A%2F%2Fminiorange.com%2Fsocial_share_redirect'; ?><i class="mo_custom_sharing_icon_font_preview fa fa-facebook" id="mo_custom_sharing_icon_font_preview_facebook"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($twitterShareEnable){ 
+$link = 'https://twitter.com/intent/tweet?text='.$title.'&amp;url='.$url; ?><i class="mo_custom_sharing_icon_font_preview fa fa-twitter" id="mo_custom_sharing_icon_font_preview_twitter"  style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;"  onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($googleShareEnable){ 
+$link = 'https://plus.google.com/share?url='.$url; ?><i class="mo_custom_sharing_icon_font_preview fa fa-google-plus" id="mo_custom_sharing_icon_font_preview_google"  style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($linkedinShareEnable){ 
+$link = 'https://www.linkedin.com/shareArticle?mini=true&amp;title='.$title.'&amp;url='.$url.'&amp;summary='.$excerpt; ?><i class="mo_custom_sharing_icon_font_preview fa fa-linkedin" id="mo_custom_sharing_icon_font_preview_linkedin"  style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($pinterestShareEnable){ ?><i class="mo_custom_sharing_icon_font_preview fa fa-pinterest" id="mo_custom_sharing_icon_font_preview_pinterest"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="pinIt()" ></i>
+<?php } if($redditShareEnable){ 
+$link = 'http://www.reddit.com/submit?url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_font_preview fa fa-reddit" id="mo_custom_sharing_icon_font_preview_reddit"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($vkontakteShareEnable){ 
+$link = 'http://vk.com/share.php?url='.$url.'&amp;title='.$title.'&amp;description='.$excerpt; ?><i class="mo_custom_sharing_icon_font_preview fa fa-vk" id="mo_custom_sharing_icon_font_preview_vk"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($tumblrShareEnable){ 
+$link = 'http://www.tumblr.com/share/link?url='.$url.'&amp;title='.$title.'&amp;description='.$excerpt; ?><i class="mo_custom_sharing_icon_font_preview fa fa-tumblr" id="mo_custom_sharing_icon_font_preview_tumblr"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($stumbleShareEnable){ 
+$link = 'http://www.stumbleupon.com/submit?url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_font_preview fa fa-stumbleupon" id="mo_custom_sharing_icon_font_preview_stumble"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($pocketShareEnable){ 
+$link = 'https://getpocket.com/save?url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_font_preview fa fa-get-pocket" id="mo_custom_sharing_icon_font_preview_pocket"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($diggShareEnable){ 
+$link = 'http://digg.com/submit?url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_font_preview fa fa-digg" id="mo_custom_sharing_icon_font_preview_digg"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($deliciousShareEnable){ 
+$link = 'http://www.delicious.com/save?v=5&noui&jump=close&url='.$url.'&amp;title='.$title; ?><i class="mo_custom_sharing_icon_font_preview fa fa-delicious" id="mo_custom_sharing_icon_font_preview_delicious"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } if($odnoklassnikiShareEnable){ 
+$link = 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st.comments='.$excerpt.'&amp;st._surl='.$url; ?><i class="mo_custom_sharing_icon_font_preview fa fa-odnoklassniki" id="mo_custom_sharing_icon_font_preview_odnoklassniki"   style="text-align: center; margin-top: 5px; font-size:<?php echo $shareIconSize;?>px; color:<?php echo $shareIconCustomFont;?>; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" ></i>
+<?php } ?>
+</div>
+
+<?php } else { ?>
+<div>
+<?php if($facebookShareEnable){ 
+$link = 'https://www.facebook.com/dialog/share?app_id=766555246789034&amp;display=popup&amp;href='.$url.'&amp;redirect_uri=http%3A%2F%2Fminiorange.com%2Fsocial_share_redirect';
+?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_facebook" src="<?php echo $this->getIconImage('facebook') ?>" 
+style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);" />
+<?php } if($twitterShareEnable){ 
+$link = 'https://twitter.com/intent/tweet?text='.$title.'&amp;url='.$url;?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_twitter" src="<?php echo $this->getIconImage('twitter') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($googleShareEnable){ 
+$link = 'https://plus.google.com/share?url='.$url; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_google" src="<?php echo $this->getIconImage('google') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($vkontakteShareEnable){ 
+$link = 'http://vk.com/share.php?url='.$url.'&amp;title='.$title.'&amp;description='.$excerpt; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_vk" src="<?php echo $this->getIconImage('vk') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($tumblrShareEnable){ 
+$link = 'http://www.tumblr.com/share/link?url='.$url.'&amp;title='.$title.'&amp;description='.$excerpt; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_tumblr" src="<?php echo $this->getIconImage('tumblr') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($stumbleShareEnable){ 
+$link = 'http://www.stumbleupon.com/submit?url='.$url.'&amp;title='.$title; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_stumble" src="<?php echo $this->getIconImage('stumble') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($linkedinShareEnable){ 
+$link = 'https://www.linkedin.com/shareArticle?mini=true&amp;title='.$title.'&amp;url='.$url.'&amp;summary='.$excerpt; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_linkedin" src="<?php echo $this->getIconImage('linkedin') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($redditShareEnable){ 
+$link = 'http://www.reddit.com/submit?url='.$url.'&amp;title='.$title; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_reddit" src="<?php echo $this->getIconImage('reddit') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($pinterestShareEnable){ ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_pinterest" src="<?php echo $this->getIconImage('pininterest') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="pinIt()"  />
+<?php } if($pocketShareEnable){ 
+$link = 'https://getpocket.com/save?url='.$url.'&amp;title='.$title; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_pocket" src="<?php echo $this->getIconImage('pocket') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($diggShareEnable){ 
+$link = 'http://digg.com/submit?url='.$url.'&amp;title='.$title; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_digg" src="<?php echo $this->getIconImage('digg') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($deliciousShareEnable){ 
+$link = 'http://www.delicious.com/save?v=5&noui&jump=close&url='.$url.'&amp;title='.$title; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_delicious" src="<?php echo $this->getIconImage('delicious') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } if($odnoklassnikiShareEnable){ 
+$link = 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st.comments='.$excerpt.'&amp;st._surl='.$url; ?><img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_odnoklassniki" src="<?php echo $this->getIconImage('odnoklassniki') ?>" style="height:<?php echo $shareIconSize;?>px; width:<?php echo $shareIconSize;?>px; font-size:<?php echo $shareIconSize-10;?>px; margin-left:<?php echo $shareIconSpace;?>px; border-radius:<?php echo $borderRadius;?>px;" onclick="popupCenter('<?php echo $link; ?>', 800, 400);"  />
+<?php } ?>
+</div>
+<?php } ?>
+
+<script>
+	
+	function popupCenter(pageURL, w,h) {
+		var left = (screen.width/2)-(w/2);
+		var top = (screen.height/2)-(h/2);
+		var targetWin = window.open (pageURL, "_blank",'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+	}
+	function pinIt()
+	{
+       var e = document.createElement('script');
+       e.setAttribute('type','text/javascript');
+       e.setAttribute('charset','UTF-8');
+       e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+	   document.body.appendChild(e);
+	}
+</script>
