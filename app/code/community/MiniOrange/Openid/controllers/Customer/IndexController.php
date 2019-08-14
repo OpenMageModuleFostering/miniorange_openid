@@ -25,7 +25,7 @@ class MiniOrange_Openid_Customer_IndexController extends Mage_Core_Controller_Fr
 			$token_params_encrypt = mcrypt_encrypt( MCRYPT_RIJNDAEL_128, $customer_token, $token, MCRYPT_MODE_ECB );
 			$token_params_encode = base64_encode( $token_params_encrypt );
 			$token_params = urlencode( $token_params_encode );
-			$userdata = 'false';
+			$userdata = 'true';
 			
 			if(isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off'){
 				$http = "https://";
@@ -38,7 +38,8 @@ class MiniOrange_Openid_Customer_IndexController extends Mage_Core_Controller_Fr
 
 			$return_url  = urlencode(Mage::getBaseUrl()."sociallogin/index/index?option=mocustomersso");
 			
-			$url =  'https://auth.miniorange.com/moas/openid-connect/client-app/authenticate?token=' . $token_params .'&userdata='. $userdata . '&id=' . $customerKey . '&encrypted=true&app=' . $_REQUEST['app_name'] . '_oauth&returnurl=' . $return_url;
+			//$url =  'https://auth.miniorange.com/moas/openid-connect/client-app/authenticate?token=' . $token_params .'&userdata='. $userdata . '&id=' . $customerKey . '&encrypted=true&app=' . $_REQUEST['app_name'] . '_oauth&returnurl=' . $return_url;
+			$url =  'https://auth.miniorange.com/moas/openid-connect/client-app/authenticate?token=' . $token_params .'&id=' . $customerKey . '&encrypted=true&app=' . $_REQUEST['app_name'] . '_oauth&returnurl=' . $return_url;
 			header("Location: ".$url);
 			exit;
 		}else if( isset( $_REQUEST['option'] ) and strpos( $_REQUEST['option'], 'mocustomersso' ) !== false ){

@@ -13,9 +13,17 @@
 
 
 <?php
+
 	$url = $http . $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'];
-	$title = "";
+	$title = $this->getLayout()->getBlock('head')->getTitle();
 	$excerpt = "";
+	$product_id = Mage::registry('current_product')->getId();
+	if($product_id ){
+		$my_product = Mage::getModel('catalog/product')->load($product_id);
+		$excerpt = $my_product->getDescription();
+		if($excerpt)
+			$excerpt = substr($excerpt, 0, 50);
+	}
 	$shareIconTheme = $this->getConfigForAdmin('shareIconTheme');
 	$shareIconCustomTheme = $this->getConfigForAdmin('shareIconCustomTheme');
 	$shareIconCustomColor = $this->getConfigForAdmin('shareIconCustomColor');
