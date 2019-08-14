@@ -1,0 +1,206 @@
+<!--
+***************************************************************************************************
+
+										PRICING DETAILS
+
+***************************************************************************************************	
+-->
+<div class="page" id="pricing">
+	<input type="submit" id="check_plan" style="width:100px;float:right;margin-right:2%" class="button button-primary button-large" value="Check Plan" onclick="checkLicense();"/>
+	<input type="submit" name="submit" value="OK, Got It" style="width:100px;float:right;margin-right:2%" class="button button-primary button-large" onclick="jQuery('#social-login-setup > a').click();">
+	<h3>LICENSING PLANS</h3>
+	<p style="font-size:12px">Social Sharing is absolutely free for any number of users.</p><hr>				
+	<table class="mo_openid_pricing_table">
+		<tbody><tr>
+			<td>
+				<div class="mo_openid_thumbnail mo_openid_pricing_free_tab">
+					<div style="height:16%;">
+						<h2 class="mo_openid_pricing_header">Free - Forever</h2>
+						<h3>(You are automatically on this plan)</h3>
+					</div>
+					<hr>
+					<div style="height:24%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">$0 - One Time Payment</p>
+					</div>
+					<hr>
+					<div style="height:30%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">
+							Social Sharing (Free Forever)<br/>
+							Social Comments (Free Forever)<br/>
+							Social Login(Free for 30 days)<br/>
+						</p>
+					</div>
+					<hr>
+					<div style="height:12%;padding:2% 0;">
+						<p class="mo_openid_pricing_text"></p>
+					</div>
+					<hr>
+					<div style="height:10%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">Basic Support by Email</p>
+					</div>
+				</div>
+			</td>
+			<td>
+				<div class="mo_openid_thumbnail mo_openid_pricing_free_tab">
+					<div style="height:16%;">
+						<h3 class="mo_openid_pricing_header">Do It Yourself</h3>
+						<?php if($this->mo_openid_is_customer_valid() && $this->mo_openid_check_customer_plan('RG8gSXQgWW91cnNlbGYgUGxhbiAtIE1hZ2VudG8gU29jaWFsIExvZ2lu')) {?>	
+							<input type="submit" value="Recharge" class="button button-primary button-large" onclick="upgradeform('social_login_recharge_plan')">
+						<?php } else { ?>
+							<input type="submit" value="Upgrade Now" class="button button-primary button-large" onclick="upgradeform('magento_social_login_basic_plan')">
+						<?php }?>
+					</div>
+					<hr>
+					<div style="height:24%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">
+								$9 - One Time Payment<br>+<br>
+								$0 - For First 10,000 Logins**
+						</p>
+						<p style="padding-top:2%;">
+						<?php if($this->mo_openid_is_customer_valid()) { ?>
+							<span class="mo_openid_pricing_text">Recharge Plans</span><br/>
+							<select class="mo_openid_license_select_option" <?php if($this->mo_openid_is_customer_valid()) { ?> style="padding-left:22% !important" <?php } ?>>
+							    <option>&nbsp;&nbsp;$9 for 10k logins</option>
+							    <option>&nbsp;$29 for 50k logins</option>
+							    <option>&nbsp;$69 for 100k logins</option>
+							    <option>$149 for 500k logins</option>
+							    <option>$249 for 1million logins</option>
+							</select>
+						<?php } ?>
+						</p>
+					</div>
+					<hr>
+					<div style="height:30%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">
+							Social Sharing<br>
+							Social Comments<br>
+							Social Login
+						</p>
+					</div>
+					<hr>
+					<div style="height:12%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">
+							Get access to user data like Name, Email, Username, Display Picture
+						</p>
+					</div>
+					<hr>
+					<div style="height:10%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">Basic Support by Email</p>
+					</div>
+				</div>
+			</td>
+			<td>
+				<div class="mo_openid_thumbnail mo_openid_pricing_paid_tab">
+					<div style="height:16%;">
+						<h3 class="mo_openid_pricing_header">Best Value</h3>
+						<?php if($this->mo_openid_is_customer_valid() && $this->mo_openid_check_customer_plan('QmVzdCBWYWx1ZSBQbGFuIC0gTWFnZW50byBTb2NpYWwgTG9naW4=')){ ?>
+							<input type="submit" value="Recharge" class="button button-primary button-large" onclick="upgradeform('social_login_recharge_plan')">
+						<?php } else { ?>
+							<input type="submit" value="Upgrade Now" class="button button-primary button-large" onclick="upgradeform('magento_social_login_best_value_basic_plan')">
+						<?php }?>
+					</div>
+					<hr>
+					<div style="height:24%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">
+								$19 - One Time Payment<br>+<br>
+								$0 - For First 10,000 Logins**
+						</p>
+						<p style="padding-top:2%;">
+						<?php if($this->mo_openid_is_customer_valid()) { ?>
+							<span class="mo_openid_pricing_text">Recharge Plans</span><br/>
+							<select class="mo_openid_license_select_option" <?php if($this->mo_openid_is_customer_valid()) { ?> style="padding-left:22% !important" <?php } ?>>
+							    <option>&nbsp;&nbsp;$9 for 10k logins</option>
+							    <option>&nbsp;$29 for 50k logins</option>
+							    <option>&nbsp;$69 for 100k logins</option>
+							    <option>$149 for 500k logins</option>
+							    <option>$249 for 1million logins</option>
+							</select>
+						<?php } ?>
+						</p>
+					</div>
+					<hr>
+					<div style="height:30%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">
+							Social Sharing<br/>
+							Social Comments<br/>
+							Social Login<br/>
+							Extended Profile Data<br/>
+							Social Analytics Dashboard Access<br/>
+							Custom Apps***
+						</p>
+					</div>
+					<hr>
+					<div style="height:12%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">Get access to user data like Name, Email, Username, Display Picture and <a target="_blank" href="http://miniorange.com/social-data-from-social-sites" style="color:pink">Extended Profile Data</a></p>
+					</div>
+					<hr>
+					<div style="height:10%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">Premium Support</p>
+					</div>
+				</div>
+			</td>
+			<td>
+				<div class="mo_openid_thumbnail mo_openid_pricing_free_tab">
+					<div style="height:16%;">
+						<h3 class="mo_openid_pricing_header">Premium</h3>
+						<?php if($this->mo_openid_is_customer_valid() && $this->mo_openid_check_customer_plan('UHJlbWl1bSBQbGFuIC0gTWFnZW50byBTb2NpYWwgTG9naW4=')) { ?>	
+							<input type="submit" value="Recharge" class="button button-primary button-large" onclick="upgradeform('social_login_recharge_plan')">
+						<?php } else { ?>
+							<input type="submit" value="Upgrade Now" class="button button-primary button-large" onclick="upgradeform('magento_social_login_premium_plan')">
+						<?php }?>
+					</div>
+					<hr>
+					<div style="height:24%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">
+								$29 - One Time Payment<br>+<br>
+								$0 - For First 10,000 Logins**
+						</p>
+						<p style="padding-top:2%;">
+						<?php if($this->mo_openid_is_customer_valid()) { ?>
+							<span class="mo_openid_pricing_text">Recharge Plans</span><br/>
+							<select class="mo_openid_license_select_option" <?php if($this->mo_openid_is_customer_valid()) { ?> style="padding-left:22% !important" <?php } ?>>
+							    <option>&nbsp;&nbsp;$9 for 10k logins</option>
+							    <option>&nbsp;$29 for 50k logins</option>
+							    <option>&nbsp;$69 for 100k logins</option>
+							    <option>$149 for 500k logins</option>
+							    <option>$249 for 1million logins</option>
+							</select>
+						<?php } ?>
+						</p>
+					</div>
+					<hr>
+					<div style="height:30%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">
+							Social Sharing<br/>
+							Social Comments<br/>
+							Social Login<br/>
+							Extended Profile Data<br/>
+							Social Analytics Dashboard Access<br/>
+							Custom Apps***<br/>
+							Custom Integration
+						</p>
+					</div>
+					<hr>
+					<div style="height:12%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">Get access to user data like Name, Email, Username, Display Picture  and <a target="_blank" href="http://miniorange.com/social-data-from-social-sites" style="color:pink">Extended Profile Data</a></p>
+					</div>
+					<hr>
+					<div style="height:10%;padding:2% 0;">
+						<p class="mo_openid_pricing_text">Premium Support</p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	<div style="margin:2% 0 2% 2%;">
+		<p><span style="color:rgba(255, 0, 0, 0.76);font-weight:bold;">* Free for 30 days</span> - The plugin uses miniOrange service for Social Login. This keeps the plugin light and delegates login to miniOrange servers thereby reducing the load on your website.</p>
+		<p>** Recharge Plans for logins available in all paid plans.</p>
+		<p>*** Configuring applications for Social Media is cumbersome due to which miniOrange takes care of configuring these apps. If you still wish you use your own applications for Social Login apps, custom apps can be configured for each Social Media in Best Value and Premium plans.</p>
+
+		<h3>Steps to upgrade to premium plugin -</h3>
+		<p>1. You will be redirected to miniOrange Login Console. Enter your password with which you created an account with us. After that you will be redirected to payment page.</p>
+		<p>2. Enter you card details and complete the payment. On successful payment completion, you will see your payment listed in the Payment History.</p>
+		<p>3. On License Plans page click on <i>Check Plan</i> on top-right of the listed payment plans.</p>
+	</div>		
+</div>

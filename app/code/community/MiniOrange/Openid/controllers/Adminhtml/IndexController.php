@@ -11,6 +11,195 @@ class MiniOrange_Openid_Adminhtml_IndexController extends Mage_Adminhtml_Control
 		$this->_addContent($this->getLayout()->createBlock('core/template'));
         $this->renderLayout();
     }
+	public function validateNewAction(){
+		$params = $this->getRequest()->getParams();
+		$datahelper = $this->getHelper1();
+		$customer = $this->getHelper2();
+		$session = $this->getSession();
+		$id = $this->getId();
+		$submit = $params['submit'];
+		$storeConfig = new Mage_Core_Model_Config();
+		if($datahelper->is_curl_installed()){
+			if(array_key_exists('otp',$params) && strcasecmp($submit,"Validate OTP")==0){
+				$otp = $params['otp'];
+				$transactionId  =  $session->getRegTxID();
+				$email = $session->getaddAdmin();
+				$phone = $session->getaddPhone();
+				$pass = $session->getaddPass();
+				$content = json_decode($customer->validate_otp_token('EMAIL',null, $transactionId, $otp, $datahelper->getdefaultCustomerKey(), $datahelper->getdefaultApiKey()),true);//print_r ($content); exit;
+				if(strcasecmp($content['status'], 'SUCCESS') == 0) {
+					$this->create_customer($email,$phone,$pass);
+				}else{
+					$datahelper->displayMessage('Invalid one time passcode. Please enter a valid otp.',"ERROR");
+					$this->redirect("*/*/index");
+				}
+			}else if(strcasecmp($submit,"Back")==0){
+				$session->unsaddAdmin();
+				$session->unsaddPass();
+				$session->unsmostatus();
+				$session->unsRegTxID();
+				$this->redirect("*/*/index");
+			}else{
+				$datahelper->displayMessage('Please enter a value in otp field',"ERROR");
+				$this->redirect("*/*/index");
+			}
+		}else{
+			$datahelper->displayMessage('cURL is not enabled. Please <a id="cURL" href="#cURLfaq">click here</a> to see how to enable cURL.',"ERROR");
+			$this->redirect("*/*/index");
+		}
+	}
+	public function sendOTPPhoneAction(){
+		$params = $this->getRequest()->getParams();
+		$datahelper = $this->getHelper1();
+		$customer = $this->getHelper2();
+		$session = $this->getSession();
+		$storeConfig = new Mage_Core_Model_Config();
+		if(array_key_exists('phone',$params)){
+			$phone = $params['phone'];
+			$storeConfig ->saveConfig('miniorange/Openid/phone',$phone,'default', 0);
+			$content = json_decode($customer->send_otp_token(null,'OTP_OVER_SMS',$datahelper->getdefaultCustomerKey(),$datahelper->getdefaultApiKey(), $phone), true);
+			if(strcasecmp($content['status'], 'SUCCESS') == 0) {
+				$datahelper->displayMessage(' A one time passcode is sent to ' . $phone . '. Please enter the otp here to verify your email.',"SUCCESS");
+				$session->setRegTxID($content['txId']);
+				$session->setaddPhone($phone);
+				$session->setmostatus('MO_OTP_PHONE_VALIDATE');
+				$this->redirect("*/*/index");
+			}else{
+				$datahelper->displayMessage('There was an error in sending SMS. Please click on Resend OTP to try again.',"ERROR");
+				$session->setmostatus('MO_OTP_DELIVERED_FAILURE');
+				$this->redirect("*/*/index");
+			}
+		}else{
+			$datahelper->displayMessage('Please Enter a Phone Number.',"ERROR");
+			$this->redirect("*/*/index");
+		}
+	}
+	public function registerNewUserAction(){
+	
+		$params = $this->getRequest()->getParams();
+		$datahelper = $this->getHelper1();
+		$customer = $this->getHelper2();
+		$session = $this->getSession();
+		$storeConfig = new Mage_Core_Model_Config();
+		if($datahelper->is_curl_installed()){
+			
+			$email = $params['email'];
+			$password = $params['password'];
+			$confirm = $params['confirmPassword'];
+			$submit = $params['submit'];
+					
+			if(strcasecmp($submit,"Register") == 0){
+				if($password==$confirm){ 
+					$session->setaddAdmin($email);
+					$session->setaddPhone($phone);
+					$session->setaddPass($password);				
+					$content = $customer->check_customer($email);
+					$content = json_decode($content, true);//print_r ($content); exit;
+					if( strcasecmp( $content['status'], 'CUSTOMER_NOT_FOUND') == 0 ){ 
+						$content = json_decode($customer->send_otp_token($email,'EMAIL',$datahelper->getdefaultCustomerKey(),$datahelper->getdefaultApiKey()), true);//print_r ($content); exit;
+						if(strcasecmp($content['status'], 'SUCCESS') == 0) {
+							$session->setRegTxID($content['txId']);
+							$session->setmostatus('MO_OTP_EMAIL_VALIDATE');
+							$datahelper->displayMessage('A one time passcode is sent to '. $email .'. Please enter the otp here to verify your email.',"SUCCESS");
+							$this->redirect("*/*/index");
+						}else{
+							
+							$session->setmostatus('MO_OTP_DELIVERED_FAILURE');
+							$datahelper->displayMessage('There was an error in sending email. Please verify your email and try again.',"ERROR");
+							$this->redirect("*/*/index");
+						}
+					}else{
+						$this->get_current_customer($email,$password);
+					}
+				}else{
+					
+					$datahelper->displayMessage('Passwords do not match',"ERROR");
+					$this->redirect("*/*/index");
+				}
+			}else if(strcasecmp($submit,"Forgot Password?") == 0){
+				$this->forgotPass($email);
+				$this->redirect("*/*/index");
+			}else{
+				$this->redirect("*/*/index");
+			}
+		}else{
+			$datahelper->displayMessage('cURL is not enabled. Please <a id="cURL" href="#cURLfaq">click here</a> to see how to enable cURL.',"ERROR");
+			$this->redirect("*/*/index");
+		}
+	}
+	private function get_current_customer($email,$password){
+		$datahelper = $this->getHelper1();
+		$customer = $this->getHelper2();
+		$session = $this->getSession();
+		$storeConfig = new Mage_Core_Model_Config();
+		$content = $customer->get_customer_key($email,$password);
+		$id = $this->getId();
+		$customerKey = json_decode($content, true);
+		if(json_last_error() == JSON_ERROR_NONE) {
+			$storeConfig = new Mage_Core_Model_Config();
+			$this->saveConfig('miniorange_openid_email',$email,$id);
+			$storeConfig ->saveConfig('miniOrange/Openid/customerKey',$customerKey['id'], 'default', 0);
+			$storeConfig ->saveConfig('miniOrange/Openid/apiKey',$customerKey['apiKey'], 'default', 0);
+			$storeConfig ->saveConfig('miniOrange/Openid/token',$customerKey['token'], 'default', 0);
+			$storeConfig ->saveConfig('miniOrange/Openid/pass','','default', 0);
+			$session->unsmostatus();
+			$datahelper->displayMessage('Your account has been retrieved successfully.',"SUCCESS");
+			$this->redirect("*/*/index");
+		}
+		else{
+			$datahelper->displayMessage('You already have an account with miniOrange. Please enter a valid password.',"ERROR");
+			$storeConfig ->saveConfig('miniOrange/Openid/pass','','default', 0);
+			$session->setmostatus('MO_VERIFY_CUSTOMER');
+			$this->redirect("*/*/index");
+		}
+	}
+	private function create_customer($email,$phone,$pass){
+		$datahelper = $this->getHelper1();
+		$customer = $this->getHelper2();
+		$session = $this->getSession();
+		$storeConfig = new Mage_Core_Model_Config();
+		$customerKey = json_decode( $customer->create_customer($email,$phone,$pass), true );
+		if( strcasecmp( $customerKey['status'], 'CUSTOMER_USERNAME_ALREADY_EXISTS') == 0 ) {
+					$this->get_current_customer($email,$pass);
+		} else if( strcasecmp( $customerKey['status'], 'SUCCESS' ) == 0 ) {
+			$id = $this->getId();
+			$this->saveConfig('miniorange_openid_email',$email,$id);
+			$storeConfig = new Mage_Core_Model_Config();
+			$session->unsmostatus();
+			$storeConfig ->saveConfig('miniOrange/Openid/customerKey',$customerKey['id'], 'default', 0);
+			$storeConfig ->saveConfig('miniOrange/Openid/apiKey',$customerKey['apiKey'], 'default', 0);
+			$storeConfig ->saveConfig('miniOrange/Openid/token',$customerKey['token'], 'default', 0);
+			$datahelper->displayMessage('Login Successful. You can configure Social Login & Sharing now.',"SUCCESS");
+			$this->redirect("*/*/index");
+			
+		}
+		$storeConfig ->saveConfig('miniOrange/Openid/pass','','default', 0);
+	}
+	public function resendValidationOTPAction(){
+		$helper = $this->getHelper1();
+		$customer = $this->getHelper2();
+		$session = $this->getSession();
+		if($helper->is_curl_installed()){
+			//$admin = $session->getUser();
+			$id = $this->getId();
+			$email =$session->getaddAdmin();
+			$content = json_decode($customer->send_otp_token($email,'EMAIL',$helper->getdefaultCustomerKey(),$helper->getdefaultApiKey()), true); //send otp for verification
+			if(strcasecmp($content['status'], 'SUCCESS') == 0){
+				$session->setMytextid($content['txId']);
+				$session->setShowOTP(1);
+				$helper->displayMessage('OTP has been sent to your Email. Please check your mail and enter the otp below.',"SUCCESS");
+				$this->redirect("*/*/index");
+			}
+			else{
+				$this->displayMessage('Error sending OTP. Please try again!',"ERROR");
+				$this->redirect("*/*/index");
+			}
+		}
+		else{
+			$this->displayMessage('cURL is not enabled. Please <a id="cURL" href="#cURLfaq">click here</a> to see how to enable cURL.',"ERROR");
+			$this->redirect("*/*/index");
+		}
+	}
 	
 	
 	public function existingUserAction(){
@@ -32,13 +221,12 @@ class MiniOrange_Openid_Adminhtml_IndexController extends Mage_Adminhtml_Control
 				$content = $customer->get_customer_key($email,$password);
 				$customerKey = json_decode($content, true);
 				if(json_last_error() == JSON_ERROR_NONE) {
-					$this->saveConfig('miniorange_2factor_email',$email,$id);
+					$this->saveConfig('miniorange_openid_email',$email,$id);
 					$storeConfig = new Mage_Core_Model_Config();
-					$storeConfig ->saveConfig('miniOrange/2factor/customerKey',$customerKey['id'], 'default', 0);
-					$storeConfig ->saveConfig('miniOrange/2factor/apiKey',$customerKey['apiKey'], 'default', 0);
-					$storeConfig ->saveConfig('miniOrange/2factor/2factorToken',$customerKey['token'], 'default', 0);
-					//$session->unsaddAdmin();
-					//$session->setShowTwoFactorSettings(1);
+					$session->unsmostatus();
+					$storeConfig ->saveConfig('miniOrange/Openid/customerKey',$customerKey['id'], 'default', 0);
+					$storeConfig ->saveConfig('miniOrange/Openid/apiKey',$customerKey['apiKey'], 'default', 0);
+					$storeConfig ->saveConfig('miniOrange/Openid/token',$customerKey['token'], 'default', 0);
 					$datahelper->displayMessage('Login Successful. You can configure Social Login & Sharing now.',"SUCCESS");
 					$this->redirect("*/*/index");
 				}
@@ -80,6 +268,7 @@ class MiniOrange_Openid_Adminhtml_IndexController extends Mage_Adminhtml_Control
 		$storeConfig ->saveConfig('miniOrange/Openid/iconCustomWidth',$params['mo_login_icon_custom_width'], 'default', 0);
 		$storeConfig ->saveConfig('miniOrange/Openid/iconCustomHeight',$params['mo_login_icon_custom_height'], 'default', 0);
 		$storeConfig ->saveConfig('miniOrange/Openid/iconCustomColor',$params['mo_login_icon_custom_color'], 'default', 0);
+		$storeConfig ->saveConfig('miniOrange/Openid/longButtonText',$params['mo_sharing_long_button_text'], 'default', 0);
 		
 		//print_r($params);
 		//exit();
@@ -111,14 +300,41 @@ class MiniOrange_Openid_Adminhtml_IndexController extends Mage_Adminhtml_Control
 		$storeConfig ->saveConfig('miniOrange/Openid/shareIconCustomFont',$params['mo_sharing_icon_custom_font'], 'default', 0);
 		$storeConfig ->saveConfig('miniOrange/Openid/shareIconSpace',$params['mo_sharing_icon_space'], 'default', 0);
 		$storeConfig ->saveConfig('miniOrange/Openid/shareIconSize',$params['mo_sharing_icon_custom_size'], 'default', 0);
-	
-		//print_r($params);
-		//exit();
+		
+		$storeConfig ->saveConfig('miniOrange/Openid/shareIconPosition',$params['mo_openid_share_position'], 'default', 0);
+		$storeConfig ->saveConfig('miniOrange/Openid/sharePositionTop',$params['mo_sharing_position_top'], 'default', 0);
 		$helper = $this->getHelper1();
 		$helper->displayMessage('Your configuration has been saved.',"SUCCESS");
-		//$this->redirect("*/*/index");
 		$redirect = Mage::helper("adminhtml")->getUrl("*/*/index");
 		Mage::app()->getResponse()->setRedirect($redirect."?q=sharing");
+	}
+
+	public function checkUserValidationAction(){
+		$helper = $this->getHelper1();
+		$customer = $this->getHelper2();
+		$customerKey = $helper->getConfig('customerKey');
+		$apiKey = $helper->getConfig('apiKey');
+		$content = $customer->check_customer_valid($customerKey,$apiKey);
+		$content = json_decode($content,true);
+		if(strcasecmp($content['status'], 'SUCCESS') == 0){
+			$storeConfig = new Mage_Core_Model_Config();
+			$type = strcasecmp($content['licenseType'], 'Premium') !== FALSE ? 1 : 0;
+			$plan = isset($content['licensePlan']) ? base64_encode($content['licensePlan']) : 0;
+			$storeConfig ->saveConfig('miniOrange/Openid/customerValid',$type, 'default', 0);
+			$storeConfig ->saveConfig('miniOrange/Openid/plan',$plan, 'default', 0);
+			if( $helper->getConfig('customerValid') && isset($content['licensePlan'])){
+				$license = array();
+				$license = explode(' -', $content['licensePlan']);
+				$lp = $license[0];
+				$helper->displayMessage('You are on ' . $lp . '.','SUCCESS');
+			} else
+				$helper->displayMessage('You are on Free - Forever Plan.','SUCCESS');
+		}else{
+			$helper->displayMessage('An error occured while processing your request. Please try again.',"ERROR");
+		}	
+
+		$redirect = Mage::helper("adminhtml")->getUrl("*/*/index");
+		Mage::app()->getResponse()->setRedirect($redirect."?q=pricing");	
 	}
 	
 	public function supportSubmitAction(){
@@ -173,7 +389,7 @@ class MiniOrange_Openid_Adminhtml_IndexController extends Mage_Adminhtml_Control
 		try {
 			$model->setId($id)->save(); 
 		} catch (Exception $e){
-			Mage::log($e->getMessage(), null, 'miniorage_openid_error.log', true);
+			Mage::log($e->getMessage(), null, 'miniorange_openid_error.log', true);
 		}
 	}
 	

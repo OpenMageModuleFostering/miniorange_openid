@@ -5,6 +5,6 @@ $installer = $this;
 
 $installer->startSetup();
 
-$installer->getConnection()->addColumn($this->getTable('admin/user'), 'miniorange_2factor_email', 'varchar(128) null');
+$installer->getConnection()->addColumn($this->getTable('admin/user'), 'miniorange_openid_email', 'varchar(128) null');
 
 $installer->endSetup();

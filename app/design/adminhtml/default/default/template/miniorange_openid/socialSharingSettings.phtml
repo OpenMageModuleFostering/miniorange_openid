@@ -1,0 +1,269 @@
+<!--
+***************************************************************************************************
+
+										SOCIAL SHARING SETTINGS
+
+***************************************************************************************************	
+-->
+<p style="font-size:14px">Select applications to add share icons. Customize sharing icons by using a range of shapes, themes and sizes to suit to your website. You can also choose different places to display these icons. Additionally, place vertical floating icons on your pages.</p>
+	<input type="submit" name="submit" value="Save" style="width:100px;float:right;margin-right:2%" class="button button-primary button-large">
+	<h3>Select Social Apps</h3>
+	<p>Select applications to enable social sharing</p>
+	<table style="width:100%;display: table;">
+	<tbody><tr>
+		<td style="width:20%">
+			<input type="checkbox" id="facebook_share_enable" class="app_enable" name="mo_openid_facebook_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('facebookShareEnable')) echo "checked"; ?>>
+			<strong>Facebook</strong>
+		</td>
+		<td style="width:20%">
+			<input type="checkbox" id="twitter_share_enable" class="app_enable" name="mo_openid_twitter_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('twitterShareEnable')) echo "checked"; ?>>
+			<strong>Twitter </strong>
+		</td>
+		<td style="width:20%">
+			<input type="checkbox" id="google_share_enable" class="app_enable" name="mo_openid_google_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('googleShareEnable')) echo "checked"; ?>>
+			<strong>Google</strong>
+		</td>
+		
+		<td style="width:20%">
+			<input type="checkbox" id="vkontakte_share_enable" class="app_enable" name="mo_openid_vkontakte_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('vkontakteShareEnable')) echo "checked"; ?>>
+			<strong>Vkontakte</strong>
+		</td>
+		<td style="width:20%">
+			<input type="checkbox" id="tumblr_share_enable" class="app_enable" name="mo_openid_tumblr_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('tumblrShareEnable')) echo "checked"; ?>>
+			<strong>Tumblr </strong>
+		</td>
+	</tr>
+	<tr>
+		<td style="width:20%">
+			<input type="checkbox" id="stumble_share_enable" class="app_enable" name="mo_openid_stumble_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('stumbleShareEnable')) echo "checked"; ?>>
+			<strong>StumbleUpon</strong>
+		</td>
+		<td style="width:20%">
+			<input type="checkbox" id="linkedin_share_enable" class="app_enable" name="mo_openid_linkedin_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('linkedinShareEnable')) echo "checked"; ?>>
+			<strong>LinkedIn</strong>
+		</td>
+		<td style="width:20%">
+			<input type="checkbox" id="reddit_share_enable" class="app_enable" name="mo_openid_reddit_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('redditShareEnable')) echo "checked"; ?>>
+			<strong>Reddit </strong>
+		</td>
+		<td style="width:20%">
+			<input type="checkbox" id="pinterest_share_enable" class="app_enable" name="mo_openid_pinterest_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('pinterestShareEnable')) echo "checked"; ?>>
+			<strong>Pinterest </strong>
+		</td>
+		<td style="width:20%">
+			<input type="checkbox" id="pocket_share_enable" class="app_enable" name="mo_openid_pocket_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('pocketShareEnable')) echo "checked"; ?>>
+			<strong>Pocket</strong>
+		</td>
+	</tr>
+	<tr>
+		<td style="width:20%">
+			<input type="checkbox" id="digg_share_enable" class="app_enable" name="mo_openid_digg_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('diggShareEnable')) echo "checked"; ?>>
+			<strong>Digg</strong>
+		</td>
+		<td style="width:20%">
+		<input type="checkbox" id="delicious_share_enable" class="app_enable" name="mo_openid_delicious_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('deliciousShareEnable')) echo "checked"; ?>>
+		<strong>Delicious</strong></td>
+		<td style="width:20%">
+			<input type="checkbox" id="odnoklassniki_share_enable" class="app_enable" name="mo_openid_odnoklassniki_share_enable" value="1" onclick="addSelectedApps();" <?php if($this->getConfig('odnoklassnikiShareEnable')) echo "checked"; ?>>
+			<strong>Odnoklassniki</strong>
+		</td>
+	</tr>
+	</tbody></table>
+	<br><hr><br>
+	<h3>Customize Sharing Icons</h3>
+	<p>Customize shape, size and background for sharing icons</p>
+	
+	
+<?php
+	$shareIconTheme = $this->getConfig('shareIconTheme');
+	$shareIconCustomTheme = $this->getConfig('shareIconCustomTheme');
+	
+	$shareIconCustomColor = $this->getConfig('shareIconCustomColor');
+	if(!$shareIconCustomColor) $shareIconCustomColor = '#000';
+	
+	$shareIconCustomFont = $this->getConfig('shareIconCustomFont');
+	if(!$shareIconCustomFont) $shareIconCustomFont = '#000'; 
+	
+	$shareIconSpace = $this->getConfig('shareIconSpace');
+	if(!$shareIconSpace) $shareIconSpace = '4'; 
+	
+	$shareIconSize = $this->getConfig('shareIconSize');
+	if(!$shareIconSize) $shareIconSize = '35'; 
+	
+	$shareIconPosition = $this->getConfigForAdmin('shareIconPosition');
+	if(!$shareIconPosition) $shareIconPosition = 'horizontal'; 
+	
+	$sharePositionTop = $this->getConfigForAdmin('sharePositionTop');
+	if(!$sharePositionTop) $sharePositionTop = '20'; 
+?>
+
+	<table style="width:100%;display:table">
+	<tbody><tr>
+		<td><b>Shape</b></td>
+		<td><b>Theme</b></td>
+		<td><b>Space between Icons</b></td>
+		<td><b>Size of Icons</b></td>
+	</tr>
+	
+	<tr>
+		<td style="width:inherit;"> <!-- Shape radio buttons -->
+			<!-- Round -->
+			<input type="radio" id="mo_openid_share_theme_circle" name="mo_openid_share_theme" value="circle" onclick="tempHorShape = 'circle';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, 'circle', setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value, document.getElementById('mo_sharing_icon_custom_font').value)" checked="checked">Round
+			
+		</td>
+		<td><!-- Theme radio buttons -->
+			<!-- Default -->
+			<input type="radio" id="mo_openid_default_background_radio" name="mo_openid_share_custom_theme" value="default" onclick="tempHorTheme = 'default';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(), 'default', document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value, document.getElementById('mo_sharing_icon_custom_font').value)" checked="checked">Default
+		</td>
+		<td> <!-- Size between icons buttons-->
+			<input style="width:50px;height:14px;border-radius: 0px;" id="mo_sharing_icon_space" name="mo_sharing_icon_space" type="text" value="<?php echo $shareIconSpace?>" onkeyup="moSharingSpaceValidate(this)">
+			<input id="mo_sharing_space_plus" type="button" value="+" onmouseup="document.getElementById('mo_sharing_icon_space').value=parseInt(document.getElementById('mo_sharing_icon_space').value)+1;moSharingPreview('horizontal',document.getElementById('mo_sharing_icon_size').value ,setTheme(),setCustomTheme(),document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value)" style="width:auto" >
+			<input id="mo_sharing_space_minus" type="button" value="-" onmouseup="document.getElementById('mo_sharing_icon_space').value=parseInt(document.getElementById('mo_sharing_icon_space').value)-1;moSharingPreview('horizontal',document.getElementById('mo_sharing_icon_size').value ,setTheme(),setCustomTheme(),document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value)" style="width:auto">
+		</td>
+		<td> <!-- Size buttons-->
+			<input style="width:50px;height: 14px;border-radius: 0px;" id="mo_sharing_icon_size" onkeyup="moSharingSizeValidate(this)" name="mo_sharing_icon_custom_size" type="text" value="<?php echo $shareIconSize?>">
+
+			<input id="mo_sharing_size_plus" type="button" value="+" onmouseup="document.getElementById('mo_sharing_icon_size').value=parseInt(document.getElementById('mo_sharing_icon_size').value)+1;tempHorSize = document.getElementById('mo_sharing_icon_size').value;moSharingPreview('horizontal',document.getElementById('mo_sharing_icon_size').value , setTheme(), setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value,document.getElementById('mo_sharing_icon_custom_font').value)"  style="width:auto">
+
+			<input id="mo_sharing_size_minus" type="button" value="-" onmouseup="document.getElementById('mo_sharing_icon_size').value=parseInt(document.getElementById('mo_sharing_icon_size').value)-1;tempHorSize = document.getElementById('mo_sharing_icon_size').value;moSharingPreview('horizontal',document.getElementById('mo_sharing_icon_size').value ,setTheme(), setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value, document.getElementById('mo_sharing_icon_custom_font').value)" style="width:auto">
+		</td>
+	</tr>
+	<tr>
+	<td> <!-- Shape radio buttons -->
+		<!-- Rounded Edges -->
+		<input type="radio" name="mo_openid_share_theme" value="oval" onclick="tempHorShape = 'circle';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, 'oval', setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value)" <?php if($shareIconTheme=='oval') echo "checked"; ?>>Rounded Edges
+	</td>
+	<td> <!-- Theme radio buttons -->
+		<!-- Custom background -->
+		
+		<input type="radio" id="mo_openid_custom_background_radio" name="mo_openid_share_custom_theme" value="custom" onclick="tempHorTheme = 'custom';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(),'custom',document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value)" <?php if($shareIconCustomTheme=='custom') echo "checked"; ?>>Custom background*
+	</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td> <!-- Shape radio buttons -->
+		<!-- Square -->
+		<input type="radio" name="mo_openid_share_theme" value="square" onclick="tempHorShape = 'square';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(), setCustomTheme(), document.getElementById('mo_sharing_icon_custom_color').value, document.getElementById('mo_sharing_icon_space').value)" <?php if($shareIconTheme=='square') echo "checked"; ?>>Square
+	</td>
+	<td> <!-- Theme radio buttons -->
+		<!-- Custom background textbox -->
+		
+		<input id="mo_sharing_icon_custom_color" name="mo_sharing_icon_custom_color" value="<?php echo $shareIconCustomColor; ?>" onchange="moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(),setCustomTheme(),document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value,document.getElementById('mo_sharing_icon_custom_font').value)" type="color">
+	</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td> <!-- Theme radio buttons -->
+		<!-- No background -->
+		<input type="radio" id="mo_openid_no_background_radio" name="mo_openid_share_custom_theme" value="customFont" onclick="tempHorTheme = 'custom';moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(),'customFont',document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value,document.getElementById('mo_sharing_icon_custom_font').value)" <?php if($shareIconCustomTheme=='customFont') echo "checked"; ?>>No background*
+	</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td> <!-- Theme radio buttons -->
+		<!-- No background textbox-->
+		<input id="mo_sharing_icon_custom_font" name="mo_sharing_icon_custom_font" type="color" value="<?php echo $shareIconCustomFont; ?>" onchange="moSharingPreview('horizontal', document.getElementById('mo_sharing_icon_size').value, setTheme(),setCustomTheme(),document.getElementById('mo_sharing_icon_custom_color').value,document.getElementById('mo_sharing_icon_space').value,document.getElementById('mo_sharing_icon_custom_font').value,document.getElementById('mo_sharing_icon_custom_font').value)" >
+	</td>
+	<td></td>
+	<td></td>
+</tr>
+	</tbody></table>
+
+
+
+
+<div class="mo2f_table_layout">		
+<br/><hr><br/>
+<h3>Icon Positions</h3>
+<table><tr>
+<td>
+<input type="radio" id="mo_openid_share_position_horizontal" name="mo_openid_share_position" value="horizontal" onclick="moSharingSetPosition('horizontal')" checked="checked">Horizontal
+</td>
+<td>
+<input type="radio" id="mo_openid_share_position_left_vertical" name="mo_openid_share_position" value="leftvertical" onclick="moSharingSetPosition('leftvertical')" <?php if($shareIconPosition=='leftvertical') echo "checked"; ?>>Left Vertical
+</td>
+<td>
+<input type="radio" id="mo_openid_share_position_right_vertical" name="mo_openid_share_position" value="rightvertical" onclick="moSharingSetPosition('rightvertical')" <?php if($shareIconPosition=='rightvertical') echo "checked"; ?>>Right Vertical
+</td>
+</tr>
+<tr>
+<td colspan="2"> 
+<b>Icons Margin from Top </b><br><br>
+<input style="width:50px;height:14px;border-radius: 0px;" id="mo_sharing_position_top" name="mo_sharing_position_top" type="text" value="<?php echo $sharePositionTop;?>"  onkeyup="moSharingSetPosition(jQuery('input[name=mo_openid_share_position]:checked', '#settings_form').val());">
+<input id="mo_sharing_space_plus" type="button" value="+" onmouseup="document.getElementById('mo_sharing_position_top').value=parseInt(document.getElementById('mo_sharing_position_top').value)+1;moSharingSetPosition(jQuery('input[name=mo_openid_share_position]:checked', '#settings_form').val());" style="width:auto">
+<input id="mo_sharing_space_minus" type="button" value="-" onmouseup="document.getElementById('mo_sharing_position_top').value=parseInt(document.getElementById('mo_sharing_position_top').value)-1;moSharingSetPosition(jQuery('input[name=mo_openid_share_position]:checked', '#settings_form').val());" style="width:auto">
+</td>
+</td>
+
+<td></td></tr>
+</table>
+<br/><br/><hr><br/>
+</div>
+
+<b>Preview: </b><br/><br/>
+<span hidden id="no_apps_text">No apps selected</span>
+
+<div class="moshareiconsdiv">
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_facebook" src="<?php echo $this->getIconImage('facebook') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_twitter" src="<?php echo $this->getIconImage('twitter') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_google" src="<?php echo $this->getIconImage('google') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_vk" src="<?php echo $this->getIconImage('vk') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_tumblr" src="<?php echo $this->getIconImage('tumblr') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_stumble" src="<?php echo $this->getIconImage('stumble') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_linkedin" src="<?php echo $this->getIconImage('linkedin') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_reddit" src="<?php echo $this->getIconImage('reddit') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_pinterest" src="<?php echo $this->getIconImage('pininterest') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_pocket" src="<?php echo $this->getIconImage('pocket') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_digg" src="<?php echo $this->getIconImage('digg') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_delicious" src="<?php echo $this->getIconImage('delicious') ?>" />
+<img class="mo_sharing_icon_preview" id="mo_sharing_icon_preview_odnoklassniki" src="<?php echo $this->getIconImage('odnoklassniki') ?>" />
+</div>
+
+<div class="moshareiconsdiv">
+<i class="mo_custom_sharing_icon_preview fa fa-facebook" id="mo_custom_sharing_icon_preview_facebook"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-twitter" id="mo_custom_sharing_icon_preview_twitter" style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;" ></i>
+<i class="mo_custom_sharing_icon_preview fa fa-google-plus" id="mo_custom_sharing_icon_preview_google"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-vk" id="mo_custom_sharing_icon_preview_vk"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-tumblr" id="mo_custom_sharing_icon_preview_tumblr"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-stumbleupon" id="mo_custom_sharing_icon_preview_stumble"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-linkedin" id="mo_custom_sharing_icon_preview_linkedin" style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-reddit" id="mo_custom_sharing_icon_preview_reddit"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-pinterest" id="mo_custom_sharing_icon_preview_pinterest"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-get-pocket" id="mo_custom_sharing_icon_preview_pocket"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-digg" id="mo_custom_sharing_icon_preview_digg"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-delicious" id="mo_custom_sharing_icon_preview_delicious"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+<i class="mo_custom_sharing_icon_preview fa fa-odnoklassniki" id="mo_custom_sharing_icon_preview_odnoklassniki"  style="color:#ffffff;text-align:center;margin-top:5px;display: inline-block; padding-top: 8px; height: 27px; width: 35px; font-size: 19px; border-radius: 0px; margin-left: 0px; background: #000;"></i>
+</div>
+
+<div class="moshareiconsdiv">
+<i class="mo_custom_sharing_icon_font_preview fa fa-facebook" id="mo_custom_sharing_icon_font_preview_facebook"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-twitter" id="mo_custom_sharing_icon_font_preview_twitter" style="text-align:center;margin-top:5px;" ></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-google-plus" id="mo_custom_sharing_icon_font_preview_google"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-linkedin" id="mo_custom_sharing_icon_font_preview_linkedin" style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-pinterest" id="mo_custom_sharing_icon_font_preview_pinterest"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-reddit" id="mo_custom_sharing_icon_font_preview_reddit"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-vk" id="mo_custom_sharing_icon_font_preview_vk"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-tumblr" id="mo_custom_sharing_icon_font_preview_tumblr"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-stumbleupon" id="mo_custom_sharing_icon_font_preview_stumble"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-get-pocket" id="mo_custom_sharing_icon_font_preview_pocket"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-digg" id="mo_custom_sharing_icon_font_preview_digg"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-delicious" id="mo_custom_sharing_icon_font_preview_delicious"  style="text-align:center;margin-top:5px;"></i>
+<i class="mo_custom_sharing_icon_font_preview fa fa-odnoklassniki" id="mo_custom_sharing_icon_font_preview_odnoklassniki"  style="text-align:center;margin-top:5px;"></i>
+</div>
+
+
+<br><br>
+
+<script>
+		var shareIconSize = '<?php echo $shareIconSize ?>';
+		var shareIconTheme = '<?php echo $shareIconTheme ?>';
+		var shareIconCustomTheme = '<?php echo $shareIconCustomTheme ?>';
+		var shareIconCustomColor = '<?php echo $shareIconCustomColor ?>';
+		var shareIconCustomFont = '<?php echo $shareIconCustomFont ?>';
+		var shareIconSpace = '<?php echo $shareIconSpace ?>';
+</script>

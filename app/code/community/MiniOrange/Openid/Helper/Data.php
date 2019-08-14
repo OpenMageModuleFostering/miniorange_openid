@@ -32,19 +32,22 @@ class MiniOrange_Openid_Helper_Data extends Mage_Core_Helper_Abstract {
 	}
 	
 	/* Function to extract config stored in the database */
-	function getConfig($config, $id) {
+	function getConfig($config, $id=null) {
 		switch ($config) {
 			case 'email' :
-				$result = Mage::getModel ( 'admin/user' )->load ( $id )->getData ( 'miniorange_2factor_email' );
+				$result = Mage::getModel ( 'admin/user' )->load ( $id )->getData ( 'miniorange_openid_email' );
 				break;
 			case 'customerKey' :
-				$result = Mage::getStoreConfig ( 'miniOrange/2factor/customerKey' );
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/customerKey' );
+				break;
+			case 'status' :
+				$result= Mage::getStoreConfig ( 'miniOrange/Openid/registration/status' );
 				break;
 			case 'apiKey' :
-				$result = Mage::getStoreConfig ( 'miniOrange/2factor/apiKey' );
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/apiKey' );
 				break;
 			case 'apiToken' :
-				$result = Mage::getStoreConfig ( 'miniOrange/2factor/2factorToken' );
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/token' );
 				break;
 			case 'googleEnable' :
 				$result = Mage::getStoreConfig ( 'miniOrange/Openid/googleEnable' );
@@ -148,6 +151,21 @@ class MiniOrange_Openid_Helper_Data extends Mage_Core_Helper_Abstract {
 				break;
 			case 'shareIconSize' :
 				$result = Mage::getStoreConfig ( 'miniOrange/Openid/shareIconSize' );
+				break;
+			case 'shareIconPosition' :
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/shareIconPosition' );
+				break;
+			case 'sharePositionTop' :
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/sharePositionTop' );
+				break;
+			case 'longButtonText' :
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/longButtonText' );
+				break;
+			case 'customerValid' :
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/customerValid' );
+				break;
+			case 'plan' :
+				$result = Mage::getStoreConfig ( 'miniOrange/Openid/plan' );
 				break;
 			default :
 				return;

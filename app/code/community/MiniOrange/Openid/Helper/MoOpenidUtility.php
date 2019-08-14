@@ -291,55 +291,6 @@ class MiniOrange_Openid_Helper_MoOpenidUtility extends Mage_Core_Helper_Abstract
 	}
 	
 	
-	function register_mobile($useremail,$id){
-		$url = $this->hostname . '/moas/api/auth/register-mobile';
-		$ch = curl_init($url);
-		$email = $useremail;
-		
-		/* The customer Key provided to you */
-		$customerKey = Mage::helper('MiniOrange_2factor')->getConfig('customerKey',$id);
-	
-		/* The customer API Key provided to you */
-		$apiKey = Mage::helper('MiniOrange_2factor')->getConfig('apiKey',$id);
-	
-		/* Current time in milliseconds since midnight, January 1, 1970 UTC. */
-		$currentTimeInMillis = round(microtime(true) * 1000);
-	
-		/* Creating the Hash using SHA-512 algorithm */
-		$stringToHash = $customerKey . $currentTimeInMillis . $apiKey;
-		$hashValue = hash("sha512", $stringToHash);
-	
-		$customerKeyHeader = "Customer-Key: " . $customerKey;
-		$timestampHeader = "Timestamp: " . $currentTimeInMillis;
-		$authorizationHeader = "Authorization: " . $hashValue;
-		
-		$fields = array(
-			'username' => $email
-		);
-		
-		$field_string = json_encode($fields);
-
-		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
-		curl_setopt( $ch, CURLOPT_ENCODING, "" );
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-		curl_setopt( $ch, CURLOPT_AUTOREFERER, true );
-		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );    # required for https urls
-
-		curl_setopt( $ch, CURLOPT_MAXREDIRS, 10 );
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json", $customerKeyHeader, $timestampHeader, $authorizationHeader));
-		curl_setopt( $ch, CURLOPT_POST, true);
-		curl_setopt( $ch, CURLOPT_POSTFIELDS, $field_string);
-		$content = curl_exec($ch);
-
-		if(curl_errno($ch)){
-			echo 'Request Error:' . curl_error($ch);
-		   exit();
-		}
-		curl_close($ch);
-		return $content;
-	}
-	
-	
 	function forgot_password($email,$customerKey,$apiKey){
 		$url = $this->hostname . '/moas/rest/customer/password-reset';
 		$ch = curl_init($url);
@@ -567,6 +518,47 @@ class MiniOrange_Openid_Helper_MoOpenidUtility extends Mage_Core_Helper_Abstract
 
 		if(curl_errno($ch)){
 			return null;
+		}
+		curl_close($ch);
+		return $content;
+	}
+
+	function check_customer_valid($customerKey,$apiKey){
+		$url = $this->hostname . '/moas/rest/customer/license';
+		$ch = curl_init($url);
+
+		/* Current time in milliseconds since midnight, January 1, 1970 UTC. */
+		$currentTimeInMillis = round(microtime(true) * 1000);
+
+		/* Creating the Hash using SHA-512 algorithm */
+		$stringToHash = $customerKey . number_format($currentTimeInMillis, 0, '', '') . $apiKey;
+		$hashValue = hash("sha512", $stringToHash);
+
+		$customerKeyHeader = "Customer-Key: " . $customerKey;
+		$timestampHeader = "Timestamp: " . $currentTimeInMillis;
+		$authorizationHeader = "Authorization: " . $hashValue;
+		$fields = array(
+					   'customerId' => $customerKey,
+					   'applicationName' => 'magento_social_login'
+				);
+		$field_string = json_encode($fields);
+
+		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+		curl_setopt( $ch, CURLOPT_ENCODING, "" );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt( $ch, CURLOPT_AUTOREFERER, true );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );    # required for https urls
+
+		curl_setopt( $ch, CURLOPT_MAXREDIRS, 10 );
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json", $customerKeyHeader,
+											$timestampHeader, $authorizationHeader));
+		curl_setopt( $ch, CURLOPT_POST, true);
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, $field_string);
+		$content = curl_exec($ch);
+
+		if(curl_errno($ch)){
+			echo 'Request Error:' . curl_error($ch);
+		   exit();
 		}
 		curl_close($ch);
 		return $content;
