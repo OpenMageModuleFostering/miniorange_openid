@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/miniOrange_Openid",
+    "name": "OpenMageModuleFostering\/miniOrange_Openid",
     "type": "magento-module",
     "license": "GNU-General-Public-License-(GPL)",
     "homepage": "",
     "description": "Social Login, Social Sharing allows login, share, comment using any social network like Twitter, Google, Facebook, Vkontakte. EASIEST to configure.",
     "authors": [
-    {
-        "name": "miniOrange",
-        "email": "info@miniorange.com"
-    }
-],
+        {
+            "name": "miniOrange",
+            "email": "info@miniorange.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
